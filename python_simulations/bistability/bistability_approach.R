@@ -1,5 +1,6 @@
 library(ggplot2)
 library(viridis)
+library(patchwork)
 
 setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/bistability/")
 
@@ -7,20 +8,26 @@ auto <- read.csv("fuller_bifurcation.txt", header = T)
 
 auto$q <- auto$G4 + 0.75*auto$G3 + 0.5*auto$G2 + 0.25*auto$G1
 
-ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=q)) + 
-  geom_line(aes(color=as.factor(init_p))) + 
+p <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=q)) + 
   geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
-  scale_color_viridis(discrete=T) + theme_bw() + 
-  theme(legend.position = "none")
+  geom_line(aes(color=as.factor(init_p))) + 
+  scale_color_viridis(discrete=T) + theme_bw() + ggtitle("Diploid") + 
+  theme(legend.position = "none") + ylab("Frequency of Selected Allele")
 
 
 dip <- read.csv("dip_fuller_bifurcation.txt", header = T)
 
 dip$q <- dip$G4 + 0.75*dip$G3 + 0.5*dip$G2 + 0.25*dip$G1
 
-ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) + 
-  geom_line(aes(color=as.factor(init_q))) + 
+q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) + 
   geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
+  geom_line(aes(color=as.factor(init_q))) + ggtitle("Autotetraploid") + 
   scale_color_viridis(discrete=T) + theme_bw() + 
-  theme(legend.position = "none")
+  theme(legend.position = "none") + ylab("")
+
+png("Bistability_Trajectories.png", width = 6, height = 3, res = 300, units = "in")
+p | q
+dev.off()
+
+
 
