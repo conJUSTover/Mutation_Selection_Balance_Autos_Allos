@@ -1,0 +1,3 @@
+python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/allo_sims.py -g -g00 0.5 -g10 0.0 -g01 0.0 -g11 0.5 -N 20 -o allo_LD_decay.txt 
+python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/auto_sims.py -g -g0 0.5 -g1 0.0 -g2 0.5 -N 20 -o auto_LD_decay.txt 
+python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/auto_sims.py -g -g0 0.5 -g1 0.0 -g2 0.5 -N 20 -alpha 1.0 -o dip_LD_decay.txt 
