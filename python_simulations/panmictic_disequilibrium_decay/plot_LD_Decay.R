@@ -1,7 +1,7 @@
 library(ggplot2)
 library(reshape2)
 
-setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/")
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/panmictic_disequilibrium_decay/")
 auto_infile <- read.csv("auto_LD_decay.txt", header = T)
 allo_infile <- read.csv("allo_LD_decay.txt", header = T)
 dip_infile <- read.csv("dip_LD_decay.txt", header = T)
