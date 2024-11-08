@@ -12,7 +12,7 @@ p <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=q)) +
   geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
   geom_line(aes(color=as.factor(init_p))) + 
   scale_color_viridis(discrete=T) + theme_bw() + ggtitle("Autotetraploid") + 
-  theme(legend.position = "none") + ylab("Frequency of Selected Allele")
+  theme(legend.position = "none") + ylab("")
 
 
 dip <- read.csv("dip_fuller_bifurcation.txt", header = T)
@@ -23,7 +23,7 @@ q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) +
   geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
   geom_line(aes(color=as.factor(init_q))) + ggtitle("Diploid") + 
   scale_color_viridis(discrete=T) + theme_bw() + 
-  theme(legend.position = "none") + ylab("")
+  theme(legend.position = "none") + ylab("Frequency of Selected Allele")
 
 png("Bistability_Trajectories.png", width = 6, height = 3, res = 300, units = "in")
 q | p
