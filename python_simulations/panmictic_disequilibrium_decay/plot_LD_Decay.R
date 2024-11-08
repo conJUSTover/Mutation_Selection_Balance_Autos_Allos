@@ -19,8 +19,8 @@ auto_infile$p <- auto_infile$g0 + 0.5*auto_infile$g1
 allo_infile$p <- allo_infile$g00 + 0.5*(allo_infile$g10 + allo_infile$g10)
 dip_infile$p <- dip_infile$g0 + 0.5*dip_infile$g1
 
-auto_infile$Ploidy <- rep("Auto")
-allo_infile$Ploidy <- rep("Allo")
+auto_infile$Ploidy <- rep("Autotetraploid")
+allo_infile$Ploidy <- rep("Allotetraploid")
 dip_infile$Ploidy <- rep("Diploid")
 
 #Using the Panmictic Disequilibrium Measure from Gallais 2003 
