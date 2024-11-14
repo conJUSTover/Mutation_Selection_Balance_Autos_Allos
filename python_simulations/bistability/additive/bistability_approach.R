@@ -15,7 +15,7 @@ p <- ggplot(auto[auto$Generation < 500,], aes(x=Generation, y=q)) +
 
 dip <- read.csv("dip_fuller_bifurcation.txt", header = T)
 
-dip$q <- dip$G4 + 0.75*dip$G3 + 0.5*dip$G2 + 0.25*dip$G1
+dip$q <- dip$G2 + 0.5*dip$G1
 
 q <- ggplot(dip[dip$Generation < 500,], aes(x=Generation, y=q)) + 
   geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
