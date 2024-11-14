@@ -1,0 +1,8 @@
+ls dip.* | sed 's/dip.//g' | sed 's/.txt//g' | while read line; do sed "s/\$/,$line/g" dip.$line.txt > dip.$line.init.txt; done
+head -1 dip.990.init.txt | sed 's/990$/init_q/g' | sed 's/# //g' > dip_fuller_bifurcation.txt
+for i in dip.*init.txt; do grep -v "#" $i >> dip_fuller_bifurcation.txt; done && rm dip.[0-9]*txt
+
+#ls test.* | sed 's/test.//g' | sed 's/.txt//g' | while read line; do sed "s/\$/,$line/g" test.$line.txt > test.$line.init.txt; done
+#head -1 test.990.init.txt | sed 's/990$/init_q/g' | sed 's/# //g' > fuller_bifurcation.txt
+#for i in test.[0-9][0-9][0-9].init.txt; do grep -v "#" $i >> fuller_bifurcation.txt; done
+#rm test.[0-9]*txt
