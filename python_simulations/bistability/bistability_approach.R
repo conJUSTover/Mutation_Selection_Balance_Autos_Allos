@@ -49,7 +49,7 @@ q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Frequency of Selected Allele") + 
   facet_grid(Dominance~.)
 
-png("Bistability_Trajectories.png", width = 6, height = 3, res = 300, units = "in")
+png("Bistability_Trajectories.png", width = 6, height = 6, res = 300, units = "in")
 q | p
 dev.off()
 
