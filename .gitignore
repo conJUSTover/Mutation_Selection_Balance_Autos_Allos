@@ -1,2 +1,4 @@
-python_simulations/bistability/dip_fuller_bifurcation.txt
-python_simulations/bistability/fuller_bifurcation.txt
+python_simulations/bistability/additive/allo_fuller_bifurcation.txt
+python_simulations/bistability/dominant/allo_fuller_bifurcation.txt
+python_simulations/bistability/dominant/dip_fuller_bifurcation.txt
+python_simulations/bistability/dominant/fuller_bifurcation.txt

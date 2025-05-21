@@ -23,9 +23,20 @@ q <- ggplot(dip[dip$Generation < 500,], aes(x=Generation, y=q)) +
   scale_color_viridis(discrete=T) + theme_bw() + 
   theme(legend.position = "none") + ylab("Frequency of Selected Allele")
 
-png("Bistability_Trajectories.png", width = 6, height = 3, res = 300, units = "in")
-q | p
-dev.off()
+allo <- read.csv("allo_fuller_bifurcation.txt", header = T)
+
+allo$q <- allo$G22 + 0.75*(allo$G21 + allo$G12) + 0.5*(allo$G02 + allo$G20 + allo$G11) + 0.25*(allo$G01 + allo$G10)
+
+r <- ggplot(allo[allo$Generation < 500,], aes(x=Generation, y=q)) + 
+  geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
+  geom_line(aes(color=as.factor(init_q))) + ggtitle("Allotetraploids") + 
+  scale_color_viridis(discrete=T) + theme_bw() + 
+  theme(legend.position = "none") + ylab("Frequency of Selected Allele")
+
+#svg("Bistability_Trajectories.svg", width = 9, height = 3)
+q | p | r
+ggsave("Bistability_Trajectories.svg", width = 9, height = 3, units = "in")
+#dev.off()
 
 
 

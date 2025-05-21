@@ -4,7 +4,7 @@ library(patchwork)
 
 setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/bistability/")
 
-auto_dom <- read.csv("fuller_bifurcation.txt", header = T)
+auto_dom <- read.csv("dominant/fuller_bifurcation.txt", header = T)
 auto_dom <- auto_dom[auto_dom$init_q %% 10 == 0,]
 
 auto_add <- read.csv("additive/fuller_bifurcation.txt", header = T)
@@ -27,7 +27,7 @@ p <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=q)) +
   theme(legend.position = "none", axis.ticks.y = element_blank(), axis.text.y = element_blank()) + ylab("") + facet_grid(Dominance~.)
 
 
-dip_dom <- read.csv("dip_fuller_bifurcation.txt", header = T)
+dip_dom <- read.csv("dominant/dip_fuller_bifurcation.txt", header = T)
 dip_dom <- dip_dom[dip_dom$init_q %% 10 == 0,]
 
 dip_add <- read.csv("additive/dip_fuller_bifurcation.txt", header = T)
@@ -49,8 +49,18 @@ q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Frequency of Selected Allele") + 
   facet_grid(Dominance~.)
 
+allo <- read.csv("allo_fuller_bifurcation.txt", header = T)
+
+allo$q <- allo$G22 + 0.75*(allo$G21 + allo$G12) + 0.5*(allo$G02 + allo$G20 + allo$G11) + 0.25*(allo$G01 + allo$G10)
+
+r <- ggplot(allo[allo$Generation < 500,], aes(x=Generation, y=q)) + 
+  geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
+  geom_line(aes(color=as.factor(init_q))) + ggtitle("Allotetraploids") + 
+  scale_color_viridis(discrete=T) + theme_bw() + 
+  theme(legend.position = "none") + ylab("Frequency of Selected Allele")
+
 png("Bistability_Trajectories.png", width = 6, height = 6, res = 300, units = "in")
-q | p
+q | p | r
 dev.off()
 
 

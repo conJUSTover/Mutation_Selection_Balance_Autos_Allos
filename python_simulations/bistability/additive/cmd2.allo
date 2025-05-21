@@ -1,0 +1,3 @@
+ls allo.* | sed 's/allo.//g' | sed 's/.txt//g' | while read line; do sed "s/\$/,$line/g" allo.$line.txt > allo.$line.init.txt; done
+head -1 allo.990000.init.txt | sed 's/990000$/init_q/g' | sed 's/# //g' > allo_fuller_bifurcation.txt
+for i in allo.*init.txt; do grep -v "#" $i >> allo_fuller_bifurcation.txt; done && rm allo.[0-9]*txt
