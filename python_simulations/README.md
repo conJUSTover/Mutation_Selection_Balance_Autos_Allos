@@ -1,0 +1,1 @@
+Some of the simulation results generated in `bistability` are too large to push to github. They are easy to regenerating using the cmd files in the directories and the simulation scripts from the Conover et al paper on homoeologous exchanges's github repository.
