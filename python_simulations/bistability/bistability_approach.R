@@ -21,6 +21,8 @@ auto$q <- auto$G4 + 0.75*auto$G3 + 0.5*auto$G2 + 0.25*auto$G1
 
 auto$w <- auto$G4*(1-auto$s) + auto$G3*(1-auto$s*auto$h3) + auto$G2*(1-auto$s*auto$h2) + auto$G1*(1-auto$s*auto$h1) + auto$G0
 
+auto$w_var <- auto$G4*(auto$w - (1-auto$s))^2 + auto$G3*(auto$w -(1-auto$s*auto$h3))^2 + auto$G2*(auto$w - (1-auto$s*auto$h2))^2 + auto$G1*(auto$w -(1-auto$s*auto$h1))^2 + auto$G0*(auto$w - 1)^2
+
 p <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=q)) + 
   #geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
   geom_line(aes(color=as.factor(init_q))) + 
@@ -44,6 +46,9 @@ dip$q <- dip$G2 + 0.5*dip$G1
 dip$Dominance <- factor(dip$Dominance, levels = c("Dominant", 'Additive', 'Recessive'))
 
 dip$w <- dip$G2*(1-dip$s) + dip$G1*(1-dip$s*dip$h) + dip$G0
+
+dip$w_var <- dip$G2*(dip$w - (1-dip$s))^2 + dip$G1*(dip$w -(1-dip$s*dip$h))^2 + dip$G0*(dip$w - 1)^2
+
 
 q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) + 
   #geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
@@ -91,3 +96,19 @@ png("bistability_neutral_allele_trajectories.png", width = 6, height = 6, res = 
 q2 | p2
 dev.off()
 
+p3 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w_var)) + 
+  #geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
+  geom_line(alpha = 0.5, aes(color=as.factor(init_q))) + 
+  scale_color_viridis(discrete=T) + theme_bw() + ggtitle("Autotetraploid") + 
+  theme(legend.position = "none", axis.ticks.y = element_blank(), axis.text.y = element_blank()) + ylab("") + facet_grid(Dominance~.)
+
+q3 <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=w_var)) + 
+  #geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
+  geom_line(alpha = 0.5, aes(color=as.factor(init_q))) + ggtitle("Diploid") + 
+  scale_color_viridis(discrete=T) + theme_bw() + 
+  theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Fitness Variance") + 
+  facet_grid(Dominance~.)
+
+png("bistability_fit_var_trajectories.png", width = 6, height = 6, res = 300, units = "in")
+q3 | p3
+dev.off()

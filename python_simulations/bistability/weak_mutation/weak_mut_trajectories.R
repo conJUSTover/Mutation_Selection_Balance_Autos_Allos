@@ -97,13 +97,13 @@ dev.off()
 
 p3 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w_var)) + 
   #geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
-  geom_line(aes(color=as.factor(init_q))) + 
+  geom_line(alpha = 0.5, aes(color=as.factor(init_q))) + 
   scale_color_viridis(discrete=T) + theme_bw() + ggtitle("Autotetraploid") + 
   theme(legend.position = "none", axis.ticks.y = element_blank(), axis.text.y = element_blank()) + ylab("") + facet_grid(Dominance~.)
 
 q3 <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=w_var)) + 
   #geom_hline(yintercept = 0.9201, linetype = 'dotted') + 
-  geom_line(aes(color=as.factor(init_q))) + ggtitle("Diploid") + 
+  geom_line(alpha = 0.5, aes(color=as.factor(init_q))) + ggtitle("Diploid") + 
   scale_color_viridis(discrete=T) + theme_bw() + 
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Fitness Variance") + 
   facet_grid(Dominance~.)

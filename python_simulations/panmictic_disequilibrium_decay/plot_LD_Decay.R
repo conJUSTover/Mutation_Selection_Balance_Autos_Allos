@@ -2,7 +2,7 @@
 library(ggplot2)
 library(reshape2)
 
-setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/panmictic_disequilibrium_decay/")
+#setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/panmictic_disequilibrium_decay/")
 auto_infile <- read.csv("auto_LD_decay.txt", header = T)
 allo_infile <- read.csv("allo_LD_decay.txt", header = T)
 dip_infile <- read.csv("dip_LD_decay.txt", header = T)
@@ -38,8 +38,11 @@ names(df) <- c('Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Ploidy', 'D')
 
 
 
-png('Panmictic_Disequilibrium_Decay.png', width = 5, height = 3, res = 300, units = 'in')
+pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3.5, height = 2.15)
 ggplot(df[df$Generation < 11,], aes(Generation, D)) + 
-  geom_line(aes(linetype=Ploidy)) + ylab(bquote("\u0394"[0])) + 
-  theme_bw() + scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10))
+  geom_line(aes(linetype = Ploidy)) + 
+  ylab(bquote(Delta[0])) + 
+  theme_bw() + 
+  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10))
 dev.off()
+
