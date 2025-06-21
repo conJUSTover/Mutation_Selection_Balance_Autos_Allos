@@ -37,11 +37,10 @@ df <- rbind(auto_subset, allo_subset, dip_subset)
 names(df) <- c('Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Ploidy', 'D')
 
 
-
-pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3.5, height = 2.15)
+pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3, height = 1.6)
 ggplot(df[df$Generation < 11,], aes(Generation, D)) + 
   geom_line(aes(linetype = Ploidy)) + 
-  ylab(bquote(Delta[0])) + 
+  ylab(bquote(Delta)) + 
   theme_bw() + 
   scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10))
 dev.off()
