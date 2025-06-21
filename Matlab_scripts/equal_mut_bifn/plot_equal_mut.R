@@ -56,7 +56,7 @@ combined$Group <- factor(combined$Group, levels = c("AlleleFreq", "MutationLoad"
 allele_freq_plot <- combined %>%
   filter(Group == "AlleleFreq") %>%
   ggplot(aes(x = x, y = y, color = Model)) +
-  geom_line(size = 1) +
+  geom_line(size = .75) +
   facet_grid(. ~ Mode, labeller = label_value) +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
@@ -67,7 +67,7 @@ allele_freq_plot <- combined %>%
     breaks = c(0, 0.25, 0.5, 0.75, 1)
   ) +
   scale_color_manual(values = c("Diploid" = dip_color, "Auto- and Allotetraploid" = auto_color)) +
-  theme_bw(base_size = 12) +
+  theme_bw(base_size = 11) +
   labs(x = NULL, y = "Allele Frequency (q)", color = "Ploidy") +
   theme(
     legend.position = "none",
@@ -82,18 +82,20 @@ allele_freq_plot <- combined %>%
 mutation_load_plot <- combined %>%
   filter(Group == "MutationLoad") %>%
   ggplot(aes(x = x, y = y, color = Model)) +
-  geom_line(size = 1) +
+  geom_line(size = .75) +
   facet_grid(. ~ Mode, labeller = label_value) +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
-    breaks = c(1e-8, 1e-6, 1e-4)
+    breaks = c(1e-8, 1e-6, 1e-4),
+    labels = scales::label_scientific()
   ) +
   scale_y_continuous(
     limits = c(0, 5e-8),
-    breaks = c(0, 1e-8, 2e-8, 3e-8, 4e-8, 5e-8)
+    breaks = c(0, 1e-8, 2e-8, 3e-8, 4e-8, 5e-8),
+    labels = scales::label_scientific()
   ) +
   scale_color_manual(values = c("Diploid" = dip_color, "Auto- and Allotetraploid" = auto_color)) +
-  theme_bw(base_size = 12) +
+  theme_bw(base_size = 11) +
   labs(x = "s (Selection Coefficient)", y = "Mutation Load", color = "Ploidy") +
   theme(
     legend.position = "bottom",
@@ -103,10 +105,26 @@ mutation_load_plot <- combined %>%
     strip.text.x = element_blank()
   )
 
+# Create a data frame with tags and coordinates
+panel_labels <- data.frame(
+  Mode = factor(c("Recessive", "Additive", "Dominant"), levels = c("Recessive", "Additive", "Dominant")),
+  label_top = c("a", "b", "c"),
+  label_bottom = c("d", "e", "f")
+)
+
+# Add top row labels to allele_freq_plot
+allele_freq_plot <- allele_freq_plot +
+  geom_text(data = panel_labels, aes(label = label_top, x = 5e-4, y = 0.95),
+            inherit.aes = FALSE, size = 4, hjust = 0)
+
+# Add bottom row labels to mutation_load_plot
+mutation_load_plot <- mutation_load_plot +
+  geom_text(data = panel_labels, aes(label = label_bottom, x = 5e-4, y = 4.75e-8),
+            inherit.aes = FALSE, size = 4, hjust = 0)
 
 
 final_plot <- (allele_freq_plot / mutation_load_plot) +
-  plot_layout(heights = c(1, 1))  # adjust row heights if needed
+  plot_layout(heights = c(1, 1))
 
-ggsave("equal_mut_final.pdf", final_plot, width = 6.5, height = 4.25, units = "in")
+ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4.25, units = "in")
 
