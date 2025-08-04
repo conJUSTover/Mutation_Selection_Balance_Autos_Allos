@@ -58,7 +58,7 @@ function solve_allo_ode()
     plot(t, qb, 'Color', '#C73E1D', 'LineWidth', 2, 'DisplayName', 'qb (derived b)');
     xlabel('Time', 'FontSize', 16);
     ylabel('Allele Frequencies', 'FontSize', 16);
-    title('Evolution of Allele Frequencies', 'FontSize', 16);
+    title('Evolution of Allele Frequencies (Allotetraploid Model)', 'FontSize', 16);
     legend('FontSize', 14);
     set(gca, 'XScale', 'log', 'FontSize', 14);
     grid on;
@@ -73,7 +73,7 @@ function solve_allo_ode()
     plot(t, g11, 'Color', '#C73E1D', 'LineWidth', 2, 'DisplayName', 'g11');
     xlabel('Time', 'FontSize', 16);
     ylabel('Gamete Frequencies', 'FontSize', 16);
-    title('Evolution of Gamete Frequencies (Four-Gamete Model)', 'FontSize', 16);
+    title('Evolution of Gamete Frequencies', 'FontSize', 16);
     legend('FontSize', 14);
     set(gca, 'XScale', 'log', 'FontSize', 14);
     grid on;

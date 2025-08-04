@@ -51,7 +51,7 @@ function solve_three_gamete_genotype_ode()
     plot(t, q, 'Color', '#C73E1D', 'LineWidth', 2, 'DisplayName', 'q (derived)');
     xlabel('Time', 'FontSize', 16);
     ylabel('Allele Frequencies', 'FontSize', 16);
-    title('Evolution of Allele Frequencies', 'FontSize', 16);
+    title('Evolution of Allele Frequencies (Autotetraploid Model)', 'FontSize', 16);
     legend('FontSize', 14);
     set(gca, 'XScale', 'log', 'FontSize', 14);
     grid on;
@@ -65,7 +65,7 @@ function solve_three_gamete_genotype_ode()
     plot(t, g2, 'Color', '#C73E1D', 'LineWidth', 2, 'DisplayName', 'g2');
     xlabel('Time', 'FontSize', 16);
     ylabel('Gamete Frequencies', 'FontSize', 16);
-    title('Evolution of Gamete Frequencies (Log-Transformed Model)', 'FontSize', 16);
+    title('Evolution of Gamete Frequencies', 'FontSize', 16);
     legend('FontSize', 14);
     set(gca, 'XScale', 'log', 'FontSize', 14);
     grid on;

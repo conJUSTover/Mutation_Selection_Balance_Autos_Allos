@@ -2,7 +2,7 @@ library(ggplot2)
 library(viridis)
 library(patchwork)
 
-setwd("/Users/srgib/Desktop/Univeristy of Arizona/Gutenkunst Group/Mutation_Selection_Balance_Autos_Allos/python_simulations/bistability/weak_mutation/")
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/weak_mutation/")
 
 auto_dom <- read.csv("dominant/fuller_bifurcation.txt", header = T)
 auto_dom <- auto_dom[auto_dom$init_q %% 10 == 0,]
@@ -56,9 +56,9 @@ q <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=q)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Frequency of Selected Allele") + 
   facet_grid(Dominance~.)
 
-png("weak_mut_allele_trajectories.png", width = 6, height = 6, res = 300, units = "in")
-q | p
-dev.off()
+allele_traj = q | p
+ggsave("weak_mut_allele_trajectories.pdf", allele_traj, width = 5, height = 5, units = "in")
+
 
 p1 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w)) + 
   #geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
@@ -73,9 +73,9 @@ q1 <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=w)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Population Fitness") + 
   facet_grid(Dominance~.)
 
-png("weak_mut_fitness_trajectories.png", width = 6, height = 6, res = 300, units = "in")
-q1 | p1
-dev.off()
+fitness_traj = q1 | p1
+ggsave("weak_mut_fitness_trajectories.pdf", fitness_traj, width = 5, height = 5, units = "in")
+
 
 
 p2 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=1-q)) + 
@@ -91,9 +91,9 @@ q2 <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=1-q)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Frequency of Neutral Allele") + 
   facet_grid(Dominance~.)
 
-png("weak_mut_neutral_allele_trajectories.png", width = 6, height = 6, res = 300, units = "in")
-q2 | p2
-dev.off()
+ancestral_allele_traj = q2 | p2
+ggsave("weak_mut_ancestral_allele_trajectories.pdf", ancestral_allele_traj, width = 5, height = 5, units = "in")
+
 
 p3 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w_var)) + 
   #geom_hline(yintercept = 0.3608, linetype = 'dotted') + 
@@ -108,7 +108,7 @@ q3 <- ggplot(dip[dip$Generation < 2000,], aes(x=Generation, y=w_var)) +
   theme(legend.position = "none", strip.background = element_blank(), strip.text.y = element_blank()) + ylab("Fitness Variance") + 
   facet_grid(Dominance~.)
 
-png("weak_mut_fit_var_trajectories.png", width = 6, height = 6, res = 300, units = "in")
-q3 | p3
-dev.off()
+fit_var_traj = q3 | p3
+ggsave("weak_mut_fitness_variance_trajectories.pdf", fit_var_traj, width = 5, height = 5, units = "in")
+
 

@@ -38,7 +38,7 @@ function solve_dip_ode()
     plot(t, g1, 'Color', '#C73E1D', 'LineWidth', 2, 'DisplayName', 'g1 (q)');
     xlabel('Time', 'FontSize', 16);
     ylabel('Allele Frequencies', 'FontSize', 16);
-    title('Evolution of Allele Frequencies (Two-Allele Model)', 'FontSize', 16);
+    title('Evolution of Allele Frequencies (Diploid Model)', 'FontSize', 16);
     legend('FontSize', 14);
     set(gca, 'XScale', 'log', 'FontSize', 14);
     grid on;
