@@ -2,7 +2,7 @@
 library(ggplot2)
 library(reshape2)
 
-#setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/panmictic_disequilibrium_decay/")
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/panmictic_disequilibrium_decay/")
 auto_infile <- read.csv("auto_LD_decay.txt", header = T)
 allo_infile <- read.csv("allo_LD_decay.txt", header = T)
 dip_infile <- read.csv("dip_LD_decay.txt", header = T)
@@ -37,11 +37,20 @@ df <- rbind(auto_subset, allo_subset, dip_subset)
 names(df) <- c('Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Ploidy', 'D')
 
 
-pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3, height = 1.6)
+pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3, height = 3)
 ggplot(df[df$Generation < 11,], aes(Generation, D)) + 
   geom_line(aes(linetype = Ploidy)) + 
   ylab(bquote(Delta)) + 
   theme_bw() + 
-  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10))
+  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) + 
+  theme(
+    legend.key.size = unit(0.5, "lines"),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10),
+    legend.margin = margin(t = 1, r = 1, b = 1, l = 1, unit = "pt"),
+    legend.spacing.y = unit(0.1, "lines"),
+    legend.position = "bottom"
+  ) + 
+  guides(linetype = guide_legend(nrow = 2))
 dev.off()
 
