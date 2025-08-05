@@ -23,8 +23,6 @@ auto_dom_selected <- read_csv("auto_dom_selected.csv", col_names = FALSE)
 auto_dom_neutral  <- read_csv("auto_dom_neutral.csv", col_names = FALSE)
 auto_dom_unstable <- read_csv("auto_dom_unstable.csv", col_names = FALSE)
 
-# ----- Construct data -----
-
 # Helper function
 build_df <- function(df, model, mode, group, label = "neutral", y_col = "X2") {
   df %>%

@@ -7,6 +7,7 @@ library(patchwork)
 # Define color mapping
 dip_color <- "#F04D13"
 auto_color <- "#66BED6"
+allo_color <- "#7DAB5B"
 
 # Read in all datasets
 dip_rec <- read_csv("dip_rec.csv", col_names = FALSE)
