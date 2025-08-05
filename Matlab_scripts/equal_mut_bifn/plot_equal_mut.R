@@ -4,61 +4,123 @@ library(dplyr)
 library(tidyr)
 library(patchwork)
 
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn")
+
 # Define color mapping
 dip_color <- "#F04D13"
 auto_color <- "#66BED6"
 allo_color <- "#7DAB5B"
 
 # Read in all datasets
-dip_rec <- read_csv("dip_rec.csv", col_names = FALSE)
-dip_add <- read_csv("dip_add.csv", col_names = FALSE)
-dip_dom <- read_csv("dip_dom.csv", col_names = FALSE)
-auto_rec <- read_csv("auto_rec.csv", col_names = FALSE)
-auto_add <- read_csv("auto_add.csv", col_names = FALSE)
-auto_dom <- read_csv("auto_dom.csv", col_names = FALSE)
+dip_rec <- read_csv("dip_rec.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_part_rec <- read_csv("dip_part_rec.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_add <- read_csv("dip_add.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_part_dom <- read_csv("dip_part_dom.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_dom <- read_csv("dip_dom.csv", col_names = c("s", "q", "g0", "g1", "w"))
 
-# Add identifiers and stack all data
-add_labels <- function(df, type, mode, group) {
-  df <- df %>%
-    mutate(Model = type,
-           Mode = mode,
-           Group = group)
-  return(df)
-}
+auto_rec <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_rec <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_add <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_dom <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
-combined <- bind_rows(
-  add_labels(dip_rec,  "Diploid",    "Recessive", "AlleleFreq"),
-  add_labels(auto_rec, "Auto- and Allotetraploid", "Recessive", "AlleleFreq"),
-  add_labels(dip_add,  "Diploid",    "Additive",  "AlleleFreq"),
-  add_labels(auto_add, "Auto- and Allotetraploid", "Additive",  "AlleleFreq"),
-  add_labels(dip_dom,  "Diploid",    "Dominant",  "AlleleFreq"),
-  add_labels(auto_dom, "Auto- and Allotetraploid", "Dominant",  "AlleleFreq"),
-  
-  add_labels(dip_rec,  "Diploid",    "Recessive", "MutationLoad"),
-  add_labels(auto_rec, "Auto- and Allotetraploid", "Recessive", "MutationLoad"),
-  add_labels(dip_add,  "Diploid",    "Additive",  "MutationLoad"),
-  add_labels(auto_add, "Auto- and Allotetraploid", "Additive",  "MutationLoad"),
-  add_labels(dip_dom,  "Diploid",    "Dominant",  "MutationLoad"),
-  add_labels(auto_dom, "Auto- and Allotetraploid", "Dominant",  "MutationLoad")
-) %>%
-  mutate(
-    x = X1,
-    y = case_when(
-      Group == "AlleleFreq" ~ X2,
-      Group == "MutationLoad" & Model == "Diploid" ~ 1 - X5,
-      Group == "MutationLoad" & Model == "Auto- and Allotetraploid" ~ 1 - X6
-    )
-  )
+allo_rec <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_rec <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_add <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_dom <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
-# Factor for better facet labeling
-combined$Mode <- factor(combined$Mode, levels = c("Recessive", "Additive", "Dominant"))
-combined$Group <- factor(combined$Group, levels = c("AlleleFreq", "MutationLoad"))
+# Add dominance labels
+dip_rec$Dominance       <- "Recessive"
+dip_part_rec$Dominance  <- "Partially Recessive"
+dip_add$Dominance       <- "Additive"
+dip_part_dom$Dominance  <- "Partially Dominant"
+dip_dom$Dominance       <- "Dominant"
 
-allele_freq_plot <- combined %>%
-  filter(Group == "AlleleFreq") %>%
-  ggplot(aes(x = x, y = y, color = Model)) +
-  geom_line(size = .75) +
-  facet_grid(. ~ Mode, labeller = label_value) +
+auto_rec$Dominance       <- "Recessive"
+auto_part_rec$Dominance  <- "Partially Recessive"
+auto_add$Dominance       <- "Additive"
+auto_part_dom$Dominance  <- "Partially Dominant"
+auto_dom$Dominance       <- "Dominant"
+
+allo_rec$Dominance       <- "Recessive"
+allo_part_rec$Dominance  <- "Partially Recessive"
+allo_add$Dominance       <- "Additive"
+allo_part_dom$Dominance  <- "Partially Dominant"
+allo_dom$Dominance       <- "Dominant"
+
+# Bind each ploidy group together
+dip  <- bind_rows(dip_rec, dip_part_rec, dip_add, dip_part_dom, dip_dom)
+auto <- bind_rows(auto_rec, auto_part_rec, auto_add, auto_part_dom, auto_dom)
+allo <- bind_rows(allo_rec, allo_part_rec, allo_add, allo_part_dom, allo_dom)
+
+# Factor by dominance
+dip$Dominance <- factor(dip$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+auto$Dominance <- factor(auto$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+allo$Dominance <- factor(allo$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+
+# Calculate summary statistics for each dataset, including load, PD, and genotypes
+dip <- dip %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = g1^2, 
+         load = 1-w, 
+         PD = 0, 
+         Model = "Diploid")
+
+auto <- auto %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = 2*g0*g2 + g1^2, 
+         G3 = 2*g1*g2, 
+         G4 = g2^2,
+         load = 1-w, 
+         PD = g2 - q^2, 
+         Model = "Autotetraploid")
+
+allo <- allo %>% 
+  mutate(G0 = g00^2, 
+         G1 = 2*g00*(g01+g10), 
+         G2 = g01^2 + 2*(g00*g11 + g01*g10) + g10^2,
+         G3 = 2*g11*(g01 + g10),
+         G4 = g11^2,
+         load = 1-w, 
+         PD = g11 - q^2, 
+         Model = "Allotetraploid")
+
+# Combine all datasets (assuming you’ve already added Dominance and Ploidy columns earlier)
+full_data <- bind_rows(dip, auto, allo)
+
+# Set ploidy as a factor for consistent color and legend order
+full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid", "Allotetraploid"))
+
+# Color mapping
+ploidy_colors <- c("Diploid" = dip_color,
+                   "Autotetraploid" = auto_color,
+                   "Allotetraploid" = allo_color)
+
+# Create data frame for panel labels
+panel_labels_top <- data.frame(
+  Dominance = factor(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"),
+                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
+  label = c("A", "B", "C", "D", "E"),
+  x = rep(3e-4, 5),  # x position for labels
+  y = rep(0.95, 5)   # y position for labels
+)
+
+panel_labels_bottom <- data.frame(
+  Dominance = factor(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"),
+                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
+  label = c("F", "G", "H", "I", "J"),
+  x = rep(3e-4, 5),   # x position for labels
+  y = rep(4.75e-8, 5) # y position for labels
+)
+
+# Top row: Allele frequency (q) plot
+p_q <- ggplot(full_data, aes(x = s, y = q, color = Model)) +
+  geom_line() +
+  scale_color_manual(values = ploidy_colors) +
+  facet_wrap(~Dominance, nrow = 1, strip.position = "top") +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
     breaks = c(1e-8, 1e-6, 1e-4)
@@ -67,9 +129,10 @@ allele_freq_plot <- combined %>%
     limits = c(0, 1),
     breaks = c(0, 0.25, 0.5, 0.75, 1)
   ) +
-  scale_color_manual(values = c("Diploid" = dip_color, "Auto- and Allotetraploid" = auto_color)) +
+  # Add panel labels
+  geom_text(data = panel_labels_top, aes(x = x, y = y, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
   theme_bw(base_size = 11) +
-  labs(x = NULL, y = "Allele Frequency (q)", color = "Ploidy") +
   theme(
     legend.position = "none",
     panel.grid.minor = element_blank(),
@@ -77,14 +140,14 @@ allele_freq_plot <- combined %>%
     strip.background = element_blank(),
     axis.text.x = element_blank(),
     axis.ticks.x = element_blank()
-  )
+  ) +
+  labs(y = "Allele Frequency", x = NULL, color = "Model")
 
-
-mutation_load_plot <- combined %>%
-  filter(Group == "MutationLoad") %>%
-  ggplot(aes(x = x, y = y, color = Model)) +
-  geom_line(size = .75) +
-  facet_grid(. ~ Mode, labeller = label_value) +
+# Bottom row: Mutation load plot
+p_load <- ggplot(full_data, aes(x = s, y = load, color = Model)) +
+  geom_line() +
+  scale_color_manual(values = ploidy_colors) +
+  facet_wrap(~Dominance, nrow = 1) +  
   scale_x_log10(
     limits = c(1e-9, 1e-3),
     breaks = c(1e-8, 1e-6, 1e-4),
@@ -95,37 +158,23 @@ mutation_load_plot <- combined %>%
     breaks = c(0, 1e-8, 2e-8, 3e-8, 4e-8, 5e-8),
     labels = scales::label_scientific()
   ) +
-  scale_color_manual(values = c("Diploid" = dip_color, "Auto- and Allotetraploid" = auto_color)) +
+  # Add panel labels
+  geom_text(data = panel_labels_bottom, aes(x = x, y = y, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
   theme_bw(base_size = 11) +
-  labs(x = "s (Selection Coefficient)", y = "Mutation Load", color = "Ploidy") +
+  labs(x = "s (Selection Coefficient)", y = "Mutation Load") +
   theme(
-    legend.position = "bottom",
+    legend.position = "none",
     panel.grid.minor = element_blank(),
     strip.placement = "outside",
     strip.background = element_blank(),
-    strip.text.x = element_blank()
+    strip.text.x = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9)
   )
 
-# Create a data frame with tags and coordinates
-panel_labels <- data.frame(
-  Mode = factor(c("Recessive", "Additive", "Dominant"), levels = c("Recessive", "Additive", "Dominant")),
-  label_top = c("a", "b", "c"),
-  label_bottom = c("d", "e", "f")
-)
+# Combine plots
+final_plot <- p_q / p_load +
+  plot_layout(guides = "collect") & theme(legend.position = "bottom")
 
-# Add top row labels to allele_freq_plot
-allele_freq_plot <- allele_freq_plot +
-  geom_text(data = panel_labels, aes(label = label_top, x = 5e-4, y = 0.95),
-            inherit.aes = FALSE, size = 4, hjust = 0)
-
-# Add bottom row labels to mutation_load_plot
-mutation_load_plot <- mutation_load_plot +
-  geom_text(data = panel_labels, aes(label = label_bottom, x = 5e-4, y = 4.75e-8),
-            inherit.aes = FALSE, size = 4, hjust = 0)
-
-
-final_plot <- (allele_freq_plot / mutation_load_plot) +
-  plot_layout(heights = c(1, 1))
-
-ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4.25, units = "in")
-
+# Save
+ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4, units = "in")

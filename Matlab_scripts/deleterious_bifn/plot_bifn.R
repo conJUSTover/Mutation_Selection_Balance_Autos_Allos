@@ -4,88 +4,145 @@ library(dplyr)
 library(tidyr)
 library(patchwork)
 
-# Colors
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/deleterious_bifn")
+
+# Define color mapping
 dip_color <- "#F04D13"
 auto_color <- "#66BED6"
+allo_color <- "#7DAB5B"
 
-# Read in datasets
-dip_rec <- read_csv("dip_rec.csv", col_names = FALSE)
-auto_rec <- read_csv("auto_rec.csv", col_names = FALSE)
+# Read in datasets - Recessive
+dip_rec <- read_csv("dip_rec.csv", col_names = c("s", "q", "g0", "g1", "w"))
+auto_rec <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+allo_rec <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
-dip_add <- read_csv("dip_add.csv", col_names = FALSE)
-auto_add <- read_csv("auto_add.csv", col_names = FALSE)
+# Read in datasets - Additive
+dip_add <- read_csv("dip_add.csv", col_names = c("s", "q", "g0", "g1", "w"))
+auto_add <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+allo_add <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
-dip_dom_selected <- read_csv("dip_dom_selected.csv", col_names = FALSE)
-dip_dom_neutral  <- read_csv("dip_dom_neutral.csv", col_names = FALSE)
-dip_dom_unstable <- read_csv("dip_dom_unstable.csv", col_names = FALSE)
+# Read in datasets - Dominant (three stability categories)
+dip_dom_selected <- read_csv("dip_dom_selected.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_dom_neutral <- read_csv("dip_dom_neutral.csv", col_names = c("s", "q", "g0", "g1", "w"))
+dip_dom_unstable <- read_csv("dip_dom_unstable.csv", col_names = c("s", "q", "g0", "g1", "w"))
 
-auto_dom_selected <- read_csv("auto_dom_selected.csv", col_names = FALSE)
-auto_dom_neutral  <- read_csv("auto_dom_neutral.csv", col_names = FALSE)
-auto_dom_unstable <- read_csv("auto_dom_unstable.csv", col_names = FALSE)
+auto_dom_selected <- read_csv("auto_dom_selected.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_dom_neutral <- read_csv("auto_dom_neutral.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_dom_unstable <- read_csv("auto_dom_unstable.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
-# Helper function
-build_df <- function(df, model, mode, group, label = "neutral", y_col = "X2") {
-  df %>%
-    mutate(
-      x = .data[["X1"]],
-      y = if (group == "MutationLoad") {
-        1 - .data[[y_col]]
-      } else {
-        .data[[y_col]]
-      },
-      Model = model,
-      Mode = mode,
-      Group = group,
-      Label = label
-    ) %>%
-    select(x, y, Model, Mode, Group, Label)
-}
+allo_dom_selected <- read_csv("allo_dom_selected.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_dom_neutral <- read_csv("allo_dom_neutral.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_dom_unstable <- read_csv("allo_dom_unstable.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
-# Combine all data
-df <- bind_rows(
-  # Allele frequencies (column 2)
-  build_df(dip_rec, "Diploid", "Recessive", "AlleleFreq", y_col = "X2"),
-  build_df(auto_rec, "Auto- and Allotetraploids", "Recessive", "AlleleFreq", y_col = "X2"),
-  build_df(dip_add, "Diploid", "Additive", "AlleleFreq", y_col = "X2"),
-  build_df(auto_add, "Auto- and Allotetraploids", "Additive", "AlleleFreq", y_col = "X2"),
-  build_df(dip_dom_neutral, "Diploid", "Dominant", "AlleleFreq", "neutral", y_col = "X2"),
-  build_df(dip_dom_selected, "Diploid", "Dominant", "AlleleFreq", "selected", y_col = "X2"),
-  build_df(dip_dom_unstable, "Diploid", "Dominant", "AlleleFreq", "unstable", y_col = "X2"),
-  build_df(auto_dom_neutral, "Auto- and Allotetraploids", "Dominant", "AlleleFreq", "neutral", y_col = "X2"),
-  build_df(auto_dom_selected, "Auto- and Allotetraploids", "Dominant", "AlleleFreq", "selected", y_col = "X2"),
-  build_df(auto_dom_unstable, "Auto- and Allotetraploids", "Dominant", "AlleleFreq", "unstable", y_col = "X2"),
-  
-  # Mutation load (column 5 = diploid; column 6 = autotetraploid)
-  build_df(dip_rec, "Diploid", "Recessive", "MutationLoad", y_col = "X5"),
-  build_df(auto_rec, "Auto- and Allotetraploids", "Recessive", "MutationLoad", y_col = "X6"),
-  build_df(dip_add, "Diploid", "Additive", "MutationLoad", y_col = "X5"),
-  build_df(auto_add, "Auto- and Allotetraploids", "Additive", "MutationLoad", y_col = "X6"),
-  build_df(dip_dom_neutral, "Diploid", "Dominant", "MutationLoad", "neutral", y_col = "X5"),
-  build_df(dip_dom_selected, "Diploid", "Dominant", "MutationLoad", "selected", y_col = "X5"),
-  build_df(auto_dom_neutral, "Auto- and Allotetraploids", "Dominant", "MutationLoad", "neutral", y_col = "X6"),
-  build_df(auto_dom_selected, "Auto- and Allotetraploids", "Dominant", "MutationLoad", "selected", y_col = "X6")
-)
+# Add dominance and stability labels
+dip_rec$Dominance <- "Recessive"
+dip_rec$Stability <- "stable"
+dip_add$Dominance <- "Additive"
+dip_add$Stability <- "stable"
+dip_dom_selected$Dominance <- "Dominant"
+dip_dom_selected$Stability <- "selected"
+dip_dom_neutral$Dominance <- "Dominant"
+dip_dom_neutral$Stability <- "neutral"
+dip_dom_unstable$Dominance <- "Dominant"
+dip_dom_unstable$Stability <- "unstable"
 
+auto_rec$Dominance <- "Recessive"
+auto_rec$Stability <- "stable"
+auto_add$Dominance <- "Additive"
+auto_add$Stability <- "stable"
+auto_dom_selected$Dominance <- "Dominant"
+auto_dom_selected$Stability <- "selected"
+auto_dom_neutral$Dominance <- "Dominant"
+auto_dom_neutral$Stability <- "neutral"
+auto_dom_unstable$Dominance <- "Dominant"
+auto_dom_unstable$Stability <- "unstable"
+
+allo_rec$Dominance <- "Recessive"
+allo_rec$Stability <- "stable"
+allo_add$Dominance <- "Additive"
+allo_add$Stability <- "stable"
+allo_dom_selected$Dominance <- "Dominant"
+allo_dom_selected$Stability <- "selected"
+allo_dom_neutral$Dominance <- "Dominant"
+allo_dom_neutral$Stability <- "neutral"
+allo_dom_unstable$Dominance <- "Dominant"
+allo_dom_unstable$Stability <- "unstable"
+
+# Bind each ploidy group together
+dip <- bind_rows(dip_rec, dip_add, dip_dom_selected, dip_dom_neutral, dip_dom_unstable)
+auto <- bind_rows(auto_rec, auto_add, auto_dom_selected, auto_dom_neutral, auto_dom_unstable)
+allo <- bind_rows(allo_rec, allo_add, allo_dom_selected, allo_dom_neutral, allo_dom_unstable)
+
+# Calculate summary statistics for each dataset, including load, PD, and genotypes
+dip <- dip %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = g1^2, 
+         load = 1-w, 
+         PD = 0, 
+         Model = "Diploid")
+
+auto <- auto %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = 2*g0*g2 + g1^2, 
+         G3 = 2*g1*g2, 
+         G4 = g2^2,
+         load = 1-w, 
+         PD = g2 - q^2, 
+         Model = "Autotetraploid")
+
+allo <- allo %>% 
+  mutate(G0 = g00^2, 
+         G1 = 2*g00*(g01+g10), 
+         G2 = g01^2 + 2*(g00*g11 + g01*g10) + g10^2,
+         G3 = 2*g11*(g01 + g10),
+         G4 = g11^2,
+         load = 1-w, 
+         PD = g11 - q^2, 
+         Model = "Allotetraploid")
+
+# Combine all datasets
+full_data <- bind_rows(dip, auto, allo)
 
 # Set factor levels
-df$Mode <- factor(df$Mode, levels = c("Recessive", "Additive", "Dominant"))
-df$Group <- factor(df$Group, levels = c("AlleleFreq", "MutationLoad"))
-df$Label <- factor(df$Label, levels = c("neutral", "selected", "unstable"))
+full_data$Dominance <- factor(full_data$Dominance, levels = c("Recessive", "Additive", "Dominant"))
+full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid", "Allotetraploid"))
+full_data$Stability <- factor(full_data$Stability, levels = c("stable", "selected", "neutral", "unstable"))
 
-# Set line type: dashed for unstable
-df <- df %>%
-  mutate(LineType = ifelse(Label == "unstable", "dashed", "solid"))
+# Add line type based on stability
+full_data <- full_data %>%
+  mutate(LineType = ifelse(Stability == "unstable", "dashed", "solid"))
 
-# Plot settings
-color_map <- c("Diploid" = dip_color, "Auto- and Allotetraploids" = auto_color)
-line_map <- c("solid" = "solid", "dashed" = "dashed")
+# Color mapping
+ploidy_colors <- c("Diploid" = dip_color,
+                   "Autotetraploid" = auto_color,
+                   "Allotetraploid" = allo_color)
 
-# --- Top Row: Allele Frequencies ---
-allele_freq_plot <- df %>%
-  filter(Group == "AlleleFreq") %>%
-  ggplot(aes(x = x, y = y, color = Model, linetype = LineType, group = interaction(Model, Label))) +
-  geom_line(linewidth = .75) +
-  facet_grid(. ~ Mode) +
+# Create data frame for panel labels
+panel_labels_top <- data.frame(
+  Dominance = factor(c("Recessive", "Additive", "Dominant"),
+                     levels = c("Recessive", "Additive", "Dominant")),
+  label = c("A", "B", "C"),
+  x = rep(3e-4, 3),
+  y = rep(0.95, 3)
+)
+
+panel_labels_bottom <- data.frame(
+  Dominance = factor(c("Recessive", "Additive", "Dominant"),
+                     levels = c("Recessive", "Additive", "Dominant")),
+  label = c("D", "E", "F"),
+  x = rep(3e-4, 3),
+  y = rep(1e-5, 3)
+)
+
+# Top row: Allele frequency (q) plot
+p_q <- ggplot(full_data, aes(x = s, y = q, color = Model, linetype = LineType, 
+                             group = interaction(Model, Stability))) +
+  geom_line(linewidth = 0.75) +
+  scale_color_manual(values = ploidy_colors) +
+  scale_linetype_manual(values = c("solid" = "solid", "dashed" = "dashed"), guide = "none") +
+  facet_wrap(~Dominance, nrow = 1, strip.position = "top") +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
     breaks = c(1e-8, 1e-6, 1e-4)
@@ -94,29 +151,33 @@ allele_freq_plot <- df %>%
     limits = c(0, 1),
     breaks = c(0, 0.25, 0.5, 0.75, 1)
   ) +
-  scale_color_manual(values = color_map) +
-  scale_linetype_manual(values = line_map, guide = "none") +
+  # Add panel labels
+  geom_text(data = panel_labels_top, aes(x = x, y = y, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
   theme_bw(base_size = 11) +
   theme(
     legend.position = "none",
-    axis.text.x = element_blank(),
-    axis.title.x = element_blank(),
-    axis.ticks.x = element_blank(),
     panel.grid.minor = element_blank(),
     strip.placement = "outside",
-    strip.background = element_blank()
+    strip.background = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
   ) +
-  labs(y = "Allele Frequency (q)", title = NULL)
+  labs(y = "Allele Frequency", x = NULL, color = "Model")
 
-# --- Bottom Row: Mutation Load ---
-mutation_load_plot <- df %>%
-  filter(Group == "MutationLoad") %>%
-  ggplot(aes(x = x, y = y, color = Model, linetype = LineType, group = interaction(Model, Label))) +
-  geom_line(linewidth = .75) +
-  facet_grid(. ~ Mode) +
+# Bottom row: Mutation load plot (exclude unstable for dominant case)
+load_data <- full_data %>%
+  filter(!(Dominance == "Dominant" & Stability == "unstable"))
+
+p_load <- ggplot(load_data, aes(x = s, y = load, color = Model, linetype = LineType,
+                                group = interaction(Model, Stability))) +
+  geom_line(linewidth = 0.75) +
+  scale_color_manual(values = ploidy_colors) +
+  scale_linetype_manual(values = c("solid" = "solid", "dashed" = "dashed"), guide = "none") +
+  facet_wrap(~Dominance, nrow = 1) +  
   scale_x_log10(
     limits = c(1e-9, 1e-3),
-    breaks = c(1e-8, 1e-6, 1e-4), 
+    breaks = c(1e-8, 1e-6, 1e-4),
     labels = scales::label_scientific()
   ) +
   scale_y_log10(
@@ -124,37 +185,22 @@ mutation_load_plot <- df %>%
     breaks = c(1e-10, 1e-9, 1e-8, 1e-7, 1e-6, 1e-5),
     labels = scales::label_scientific()
   ) +
-  scale_color_manual(values = color_map) +
-  scale_linetype_manual(values = line_map, guide = "none") +
+  # Add panel labels
+  geom_text(data = panel_labels_bottom, aes(x = x, y = y, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
   theme_bw(base_size = 11) +
+  labs(x = "s (Selection Coefficient)", y = "Mutation Load") +
   theme(
-    legend.position = "bottom",
-    strip.placement = "outside",
+    legend.position = "none",
     panel.grid.minor = element_blank(),
+    strip.placement = "outside",
     strip.background = element_blank(),
     strip.text.x = element_blank()
-  ) +
-  labs(x = "s (Selection Coefficient)", y = "Mutation Load", linetype = "Regime", color = "Ploidy")
+  )
 
-# Create a data frame with tags and coordinates
-panel_labels <- data.frame(
-  Mode = factor(c("Recessive", "Additive", "Dominant"), levels = c("Recessive", "Additive", "Dominant")),
-  label_top = c("a", "b", "c"),
-  label_bottom = c("d", "e", "f")
-)
+# Combine plots
+final_plot <- p_q / p_load +
+  plot_layout(guides = "collect") & theme(legend.position = "bottom")
 
-# Add top row labels to allele_freq_plot
-allele_freq_plot <- allele_freq_plot +
-  geom_text(data = panel_labels, aes(label = label_top, x = 5e-4, y = 0.95),
-            inherit.aes = FALSE, size = 4, hjust = 0)
-
-# Add bottom row labels to mutation_load_plot
-mutation_load_plot <- mutation_load_plot +
-  geom_text(data = panel_labels, aes(label = label_bottom, x = 5e-4, y = 1e-5),
-            inherit.aes = FALSE, size = 4, hjust = 0)
-
-# --- Combine and save ---
-final_plot <- (allele_freq_plot / mutation_load_plot) +
-  plot_layout(heights = c(1, 1))
-
-ggsave("deleterious_bifn.pdf", final_plot, width = 6.5, height = 4.25, units = "in")
+# Save
+ggsave("deleterious_bifn.pdf", final_plot, width = 6.5, height = 4, units = "in")
