@@ -34,17 +34,17 @@ allo_subset <- allo_infile[,c('X..Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Pl
 dip_subset <- dip_infile[,c('X..Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Ploidy', 'D')]
 
 df <- rbind(auto_subset, allo_subset, dip_subset)
-names(df) <- c('Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Ploidy', 'D')
+names(df) <- c('Generation', 'G0', 'G1', 'G2', 'G3', 'G4', 'Model', 'D')
 
 
-pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3, height = 3)
+pdf('Panmictic_Disequilibrium_Decay.pdf', width = 3, height = 3.25)
 ggplot(df[df$Generation < 11,], aes(Generation, D)) + 
-  geom_line(aes(linetype = Ploidy)) + 
+  geom_line(aes(linetype = Model)) + 
   ylab(bquote(Delta)) + 
   theme_bw() + 
   scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) + 
   theme(
-    legend.key.size = unit(0.5, "lines"),
+    legend.key.size = unit(1, "lines"),
     legend.text = element_text(size = 9),
     legend.title = element_text(size = 10),
     legend.margin = margin(t = 1, r = 1, b = 1, l = 1, unit = "pt"),

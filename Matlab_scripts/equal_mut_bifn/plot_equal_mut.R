@@ -88,7 +88,7 @@ allo <- allo %>%
          PD = g11 - q^2, 
          Model = "Allotetraploid")
 
-# Combine all datasets (assuming you’ve already added Dominance and Ploidy columns earlier)
+# Combine all datasets
 full_data <- bind_rows(dip, auto, allo)
 
 # Set ploidy as a factor for consistent color and legend order
@@ -178,3 +178,114 @@ final_plot <- p_q / p_load +
 
 # Save
 ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4, units = "in")
+
+
+
+
+# We also want to plot the difference between the autos and allos
+
+diff_color <- "#000000"
+
+# Calculate differences between auto and allo
+# First, merge auto and allo data by s and Dominance
+auto_subset <- auto %>% select(s, Dominance, q, load)
+allo_subset <- allo %>% select(s, Dominance, q, load)
+
+diff_data <- inner_join(auto_subset, allo_subset, by = c("s", "Dominance"), suffix = c("_auto", "_allo")) %>%
+  mutate(
+    q_diff = q_auto - q_allo,
+    load_diff = load_auto - load_allo
+  )
+
+# Panel labels for difference figure
+panel_labels <- data.frame(
+  Dominance = factor(rep(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"), 2),
+                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
+  Metric = factor(c(rep("q (Auto - Allo)", 5), rep("Load (Auto - Allo)", 5)),
+                  levels = c("q (Auto - Allo)", "Load (Auto - Allo)")),
+  label = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+  x = rep(3e-4, 10),
+  y_q = rep(max(diff_data$q_diff, na.rm = TRUE) * 0.9, 5),
+  y_load = rep(max(diff_data$load_diff, na.rm = TRUE) * 0.9, 5)
+)
+
+# Create long format data for faceting
+diff_data_long <- diff_data %>%
+  select(s, Dominance, q_diff, load_diff) %>%
+  pivot_longer(cols = c(q_diff, load_diff), 
+               names_to = "metric", 
+               values_to = "difference") %>%
+  mutate(
+    Metric = case_when(
+      metric == "q_diff" ~ "q (Auto - Allo)",
+      metric == "load_diff" ~ "Load (Auto - Allo)"
+    ),
+    Metric = factor(Metric, levels = c("q (Auto - Allo)", "Load (Auto - Allo)"))
+  )
+
+# create plot of genotype distributions and PD for dominant case
+p_diff <- ggplot(diff_data_long, aes(x = s, y = difference, color = "Auto - Allo")) +
+  geom_line(linewidth = .5) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50", alpha = 0.7) +
+  facet_grid(Metric ~ Dominance, scales = "free_y") +
+  scale_color_manual(values = c("Auto - Allo" = diff_color), name = "Difference") +
+  scale_x_log10(
+    limits = c(1e-9, 1e-3),
+    breaks = c(1e-8, 1e-6, 1e-4),
+    labels = scales::label_scientific()
+  ) +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 4),
+    labels = scales::label_scientific()
+  ) +
+  # Add panel labels
+  geom_text(data = panel_labels %>% filter(Metric == "Diff q (Auto - Allo)"), 
+            aes(x = x, y = y_q, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
+  geom_text(data = panel_labels %>% filter(Metric == "Diff Load (Auto - Allo)"), 
+            aes(x = x, y = y_load, label = label),
+            inherit.aes = FALSE, size = 4, hjust = 0) +
+  theme_bw(base_size = 11) +
+  theme(
+    panel.grid.minor = element_blank(),
+    strip.background = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
+    legend.position = "none"
+  ) +
+  labs(x = "s (Selection Coefficient)", y = NULL)
+
+ggsave("auto_allo_differences_equal_mut.pdf", p_diff, width = 6.5, height = 4, units = "in")
+
+
+
+
+# plot of PD and genotype distributions to explain the bump in load
+dominant_data <- full_data %>%
+  filter(Dominance == "Dominant", Model %in% c("Autotetraploid", "Allotetraploid")) %>%
+  select(s, Model, PD, G0, G1, G2, G3, G4) %>%
+  pivot_longer(cols = c(PD, G0, G1, G2, G3, G4), 
+               names_to = "Variable", 
+               values_to = "Value") %>%
+  mutate(Variable = factor(Variable, levels = c("PD", "G0", "G1", "G2", "G3", "G4")))
+
+p_load_bump <- ggplot(dominant_data, aes(x = s, y = Value, color = Model)) +
+  geom_line(linewidth=.75) +
+  facet_wrap(~Variable, scales = "free_y", ncol = 1, strip.position = "left") +
+  scale_color_manual(values = c("Autotetraploid" = auto_color, "Allotetraploid" = allo_color)) +
+  scale_x_log10(
+    limits = c(1e-9, 1e-3),
+    breaks = c(1e-8, 1e-6, 1e-4),
+    labels = scales::label_scientific()
+  ) +
+  scale_y_continuous(labels = scales::label_scientific()) +
+  theme_bw(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    strip.background = element_blank(),
+    strip.placement = "outside",
+    legend.position = "bottom"
+  ) +
+  labs(x = "s (Selection Coefficient)", y = NULL, color = "Model")
+
+ggsave("load_bump.pdf", p_load_bump, width = 4.5, height = 7, units = "in")
+
