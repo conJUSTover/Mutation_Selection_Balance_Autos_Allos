@@ -4,14 +4,14 @@
 % this code has not been heavily optimized and may be slow
 % prints solutions and their stabilities for each s value
 
-s_val_range = 4e-6; % scalar or vector (e.g. logspace) of s values
+s_val_range = 1e-3; % scalar or vector (e.g. logspace) of s values
 
-mu_val = 2e-7; % constant value of forward mutation rate
+mu_val = 1e-8; % constant value of forward mutation rate
 nu_val = 1e-8; % constant value of backward mutation rate
 
-h1_val = 1; % h1 dominance coefficient value, constant
-h2_val = 1; % h2 dominance coefficient value, constant
-h3_val = 1; % h3 dominance coefficient value, constant
+h1_val = 0; % h1 dominance coefficient value, constant
+h2_val = 0; % h2 dominance coefficient value, constant
+h3_val = 0; % h3 dominance coefficient value, constant
 
 syms g00 g01 g10 g11 s h1 h2 h3 mu nu
 

@@ -6,6 +6,10 @@ library(patchwork)
 
 setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn")
 
+### ===========================================================
+### READ IN THE DATA, PROCESS, AND CALCULATE SUMMARY STATISTICS
+### ===========================================================
+
 # Define color mapping
 dip_color <- "#F04D13"
 auto_color <- "#66BED6"
@@ -99,6 +103,10 @@ ploidy_colors <- c("Diploid" = dip_color,
                    "Autotetraploid" = auto_color,
                    "Allotetraploid" = allo_color)
 
+### ====================================================
+### FIRST PLOT - BIFURCATION DIAGRAM SUBSET BY DOMINANCE
+### ====================================================
+
 # Create data frame for panel labels
 panel_labels_top <- data.frame(
   Dominance = factor(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"),
@@ -180,84 +188,243 @@ final_plot <- p_q / p_load +
 ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4, units = "in")
 
 
+### ================================================
+### SECOND PLOT: DIFFERENCES BETWEEN AUTOS AND ALLOS
+### ================================================
+# First, we need to read in the additional data - note we don't need the diploid data here
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn/mu_1e-7")
 
+auto_rec_7 <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_rec_7 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_add_7 <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom_7 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_dom_7 <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
-# We also want to plot the difference between the autos and allos
+allo_rec_7 <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_rec_7 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_add_7 <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom_7 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_dom_7 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
-diff_color <- "#000000"
+# Add dominance labels
+auto_rec_7$Dominance       <- "Recessive"
+auto_part_rec_7$Dominance  <- "Partially Recessive"
+auto_add_7$Dominance       <- "Additive"
+auto_part_dom_7$Dominance  <- "Partially Dominant"
+auto_dom_7$Dominance       <- "Dominant"
 
-# Calculate differences between auto and allo
-# First, merge auto and allo data by s and Dominance
-auto_subset <- auto %>% select(s, Dominance, q, load)
-allo_subset <- allo %>% select(s, Dominance, q, load)
+allo_rec_7$Dominance       <- "Recessive"
+allo_part_rec_7$Dominance  <- "Partially Recessive"
+allo_add_7$Dominance       <- "Additive"
+allo_part_dom_7$Dominance  <- "Partially Dominant"
+allo_dom_7$Dominance       <- "Dominant"
 
-diff_data <- inner_join(auto_subset, allo_subset, by = c("s", "Dominance"), suffix = c("_auto", "_allo")) %>%
+# Bind each ploidy group together
+auto_7 <- bind_rows(auto_rec_7, auto_part_rec_7, auto_add_7, auto_part_dom_7, auto_dom_7)
+allo_7 <- bind_rows(allo_rec_7, allo_part_rec_7, allo_add_7, allo_part_dom_7, allo_dom_7)
+
+# Factor by dominance
+auto_7$Dominance <- factor(auto_7$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+allo_7$Dominance <- factor(allo_7$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+
+# Calculate summary statistics for each dataset, including load, PD, and genotypes
+auto_7 <- auto_7 %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = 2*g0*g2 + g1^2, 
+         G3 = 2*g1*g2, 
+         G4 = g2^2,
+         load = 1-w, 
+         PD = g2 - q^2, 
+         Model = "Autotetraploid")
+
+allo_7 <- allo_7 %>% 
+  mutate(G0 = g00^2, 
+         G1 = 2*g00*(g01+g10), 
+         G2 = g01^2 + 2*(g00*g11 + g01*g10) + g10^2,
+         G3 = 2*g11*(g01 + g10),
+         G4 = g11^2,
+         load = 1-w, 
+         PD = g11 - q^2, 
+         Model = "Allotetraploid")
+
+# Then, do the same for the 1e-6 mutation case
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn/mu_1e-6")
+
+auto_rec_6 <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_rec_6 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_add_6 <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom_6 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_dom_6 <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+
+allo_rec_6 <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_rec_6 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_add_6 <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom_6 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_dom_6 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+
+# Add dominance labels
+auto_rec_6$Dominance       <- "Recessive"
+auto_part_rec_6$Dominance  <- "Partially Recessive"
+auto_add_6$Dominance       <- "Additive"
+auto_part_dom_6$Dominance  <- "Partially Dominant"
+auto_dom_6$Dominance       <- "Dominant"
+
+allo_rec_6$Dominance       <- "Recessive"
+allo_part_rec_6$Dominance  <- "Partially Recessive"
+allo_add_6$Dominance       <- "Additive"
+allo_part_dom_6$Dominance  <- "Partially Dominant"
+allo_dom_6$Dominance       <- "Dominant"
+
+# Bind each ploidy group together
+auto_6 <- bind_rows(auto_rec_6, auto_part_rec_6, auto_add_6, auto_part_dom_6, auto_dom_6)
+allo_6 <- bind_rows(allo_rec_6, allo_part_rec_6, allo_add_6, allo_part_dom_6, allo_dom_6)
+
+# Factor by dominance
+auto_6$Dominance <- factor(auto_6$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+allo_6$Dominance <- factor(allo_6$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+
+# Calculate summary statistics for each dataset, including load, PD, and genotypes
+auto_6 <- auto_6 %>% 
+  mutate(G0 = g0^2, 
+         G1 = 2*g0*g1, 
+         G2 = 2*g0*g2 + g1^2, 
+         G3 = 2*g1*g2, 
+         G4 = g2^2,
+         load = 1-w, 
+         PD = g2 - q^2, 
+         Model = "Autotetraploid")
+
+allo_6 <- allo_6 %>% 
+  mutate(G0 = g00^2, 
+         G1 = 2*g00*(g01+g10), 
+         G2 = g01^2 + 2*(g00*g11 + g01*g10) + g10^2,
+         G3 = 2*g11*(g01 + g10),
+         G4 = g11^2,
+         load = 1-w, 
+         PD = g11 - q^2, 
+         Model = "Allotetraploid")
+
+# change the wd again to save plots in the right place
+setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn")
+
+# 1e-8 data
+auto_subset_8 <- auto %>% select(s, Dominance, q, load)
+allo_subset_8 <- allo %>% select(s, Dominance, q, load)
+
+diff_data_8 <- inner_join(auto_subset_8, allo_subset_8, by = c("s", "Dominance"), suffix = c("_auto", "_allo")) %>%
   mutate(
     q_diff = q_auto - q_allo,
-    load_diff = load_auto - load_allo
+    load_diff = load_auto - load_allo,
+    mu = "1e-8"
   )
 
-# Panel labels for difference figure
-panel_labels <- data.frame(
-  Dominance = factor(rep(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"), 2),
-                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
-  Metric = factor(c(rep("q (Auto - Allo)", 5), rep("Load (Auto - Allo)", 5)),
-                  levels = c("q (Auto - Allo)", "Load (Auto - Allo)")),
-  label = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
-  x = rep(3e-4, 10),
-  y_q = rep(max(diff_data$q_diff, na.rm = TRUE) * 0.9, 5),
-  y_load = rep(max(diff_data$load_diff, na.rm = TRUE) * 0.9, 5)
+# 1e-7 data
+auto_subset_7 <- auto_7 %>% select(s, Dominance, q, load)
+allo_subset_7 <- allo_7 %>% select(s, Dominance, q, load)
+
+diff_data_7 <- inner_join(auto_subset_7, allo_subset_7, by = c("s", "Dominance"), suffix = c("_auto", "_allo")) %>%
+  mutate(
+    q_diff = q_auto - q_allo,
+    load_diff = load_auto - load_allo,
+    mu = "1e-7"
+  )
+
+# 1e-6 data
+auto_subset_6 <- auto_6 %>% select(s, Dominance, q, load)
+allo_subset_6 <- allo_6 %>% select(s, Dominance, q, load)
+
+diff_data_6 <- inner_join(auto_subset_6, allo_subset_6, by = c("s", "Dominance"), suffix = c("_auto", "_allo")) %>%
+  mutate(
+    q_diff = q_auto - q_allo,
+    load_diff = load_auto - load_allo,
+    mu = "1e-6"
+  )
+
+# Combine all mutation rate data
+all_diff_data <- bind_rows(diff_data_8, diff_data_7, diff_data_6)
+# Factor mutation rate for consistent ordering
+all_diff_data$mu <- factor(all_diff_data$mu, levels = c("1e-8", "1e-7", "1e-6"))
+# Define colors for mutation rates
+mu_colors <- c("1e-8" = "#000000",  
+               "1e-7" = "#000000",     
+               "1e-6" = "#000000")   
+mu_labeller <- c(
+  "1e-8" = "mu == 1e-8",
+  "1e-7" = "mu == 1e-7", 
+  "1e-6" = "mu == 1e-6"
 )
 
-# Create long format data for faceting
-diff_data_long <- diff_data %>%
-  select(s, Dominance, q_diff, load_diff) %>%
-  pivot_longer(cols = c(q_diff, load_diff), 
-               names_to = "metric", 
-               values_to = "difference") %>%
-  mutate(
-    Metric = case_when(
-      metric == "q_diff" ~ "q (Auto - Allo)",
-      metric == "load_diff" ~ "Load (Auto - Allo)"
-    ),
-    Metric = factor(Metric, levels = c("q (Auto - Allo)", "Load (Auto - Allo)"))
-  )
-
-# create plot of genotype distributions and PD for dominant case
-p_diff <- ggplot(diff_data_long, aes(x = s, y = difference, color = "Auto - Allo")) +
-  geom_line(linewidth = .5) +
+# FIRST FIGURE: Q differences with mutation rate as rows
+p_q_diff <- ggplot(all_diff_data, aes(x = s, y = q_diff, color = mu)) +
+  geom_line(linewidth = 0.7) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "gray50", alpha = 0.7) +
-  facet_grid(Metric ~ Dominance, scales = "free_y") +
-  scale_color_manual(values = c("Auto - Allo" = diff_color), name = "Difference") +
+  facet_grid(mu ~ Dominance, 
+             scales = "free_y",  # Added free y-scales
+             labeller = labeller(mu = as_labeller(mu_labeller, default = label_parsed))) +
+  scale_color_manual(values = mu_colors, name = expression("Mutation Rate (" * mu * ")")) +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
     breaks = c(1e-8, 1e-6, 1e-4),
     labels = scales::label_scientific()
   ) +
   scale_y_continuous(
+    transform = "pseudo_log",
     breaks = scales::pretty_breaks(n = 4),
     labels = scales::label_scientific()
   ) +
-  # Add panel labels
-  geom_text(data = panel_labels %>% filter(Metric == "Diff q (Auto - Allo)"), 
-            aes(x = x, y = y_q, label = label),
-            inherit.aes = FALSE, size = 4, hjust = 0) +
-  geom_text(data = panel_labels %>% filter(Metric == "Diff Load (Auto - Allo)"), 
-            aes(x = x, y = y_load, label = label),
-            inherit.aes = FALSE, size = 4, hjust = 0) +
-  theme_bw(base_size = 11) +
+  theme_bw(base_size = 10) +
   theme(
     panel.grid.minor = element_blank(),
     strip.background = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
-    legend.position = "none"
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9)
   ) +
-  labs(x = "s (Selection Coefficient)", y = NULL)
+  labs(
+    x = expression(s ~ "(Selection Coefficient)"),
+    y = expression(Delta ~ "q (Auto - Allo)"),
+    color = expression("Mutation Rate (" * mu * ")")
+  )
 
-ggsave("auto_allo_differences_equal_mut.pdf", p_diff, width = 6.5, height = 4, units = "in")
+# SECOND FIGURE: Load differences with mutation rate as rows  
+p_load_diff <- ggplot(all_diff_data, aes(x = s, y = load_diff, color = mu)) +
+  geom_line(linewidth = 0.7) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50", alpha = 0.7) +
+  facet_grid(mu ~ Dominance,
+             scales = "free_y",  # Added free y-scales
+             labeller = labeller(mu = as_labeller(mu_labeller, default = label_parsed))) +
+  scale_color_manual(values = mu_colors, name = expression("Mutation Rate (" * mu * ")")) +
+  scale_x_log10(
+    limits = c(1e-9, 1e-3),
+    breaks = c(1e-8, 1e-6, 1e-4),
+    labels = scales::label_scientific()
+  ) +
+  scale_y_continuous(
+    transform = "pseudo_log",
+    breaks = scales::pretty_breaks(n = 4),
+    labels = scales::label_scientific()
+  ) +
+  theme_bw(base_size = 10) +
+  theme(
+    panel.grid.minor = element_blank(),
+    strip.background = element_blank(),
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9)
+  ) +
+  labs(
+    x = expression(s ~ "(Selection Coefficient)"),
+    y = expression(Delta ~ "Load (Auto - Allo)"),
+    color = expression("Mutation Rate (" * mu * ")")
+  )
+
+# Save the plots
+ggsave("q_differences_by_mutation_rate.pdf", p_q_diff, width = 6.5, height = 5, units = "in")
+ggsave("load_differences_by_mutation_rate.pdf", p_load_diff, width = 6.5, height = 5, units = "in")
 
 
-
+### =====================================================================
+### THIRD PLOT: PD AND GENOTYPE DISTRIBUTIONS TO EXPLAIN THE BUMP IN LOAD
+### =====================================================================
 
 # plot of PD and genotype distributions to explain the bump in load
 dominant_data <- full_data %>%
@@ -268,9 +435,13 @@ dominant_data <- full_data %>%
                values_to = "Value") %>%
   mutate(Variable = factor(Variable, levels = c("PD", "G0", "G1", "G2", "G3", "G4")))
 
+# to change PD to have \Delta
+variable_labeller <- c("PD" = "Delta~~(PD)", "G0" = "G0", "G1" = "G1", "G2" = "G2", "G3" = "G3", "G4" = "G4")
+
 p_load_bump <- ggplot(dominant_data, aes(x = s, y = Value, color = Model)) +
   geom_line(linewidth=.75) +
-  facet_wrap(~Variable, scales = "free_y", ncol = 1, strip.position = "left") +
+  facet_wrap(~Variable, scales = "free_y", ncol = 1, strip.position = "left",
+             labeller = as_labeller(variable_labeller, default = label_parsed)) +
   scale_color_manual(values = c("Autotetraploid" = auto_color, "Allotetraploid" = allo_color)) +
   scale_x_log10(
     limits = c(1e-9, 1e-3),

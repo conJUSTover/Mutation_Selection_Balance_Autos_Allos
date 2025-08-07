@@ -7,14 +7,14 @@
 % looping through s values is included with the bifurcation data.
 
 
-s_val_range = 1e-6; % scalar or vector of s values
+s_val_range = 1e-3; % scalar or vector of s values
 
-mu_val = 5e-7; % constant value of forward mutation rate
+mu_val = 1e-8; % constant value of forward mutation rate
 nu_val = 1e-8; % constant value of backward mutation rate
 
-h1_val = .5; % h1 dominance coefficient value, constant
-h2_val = 1; % h2 dominance coefficient value, constant
-h3_val = .5; % h3 dominance coefficient value, constant
+h1_val = 0; % h1 dominance coefficient value, constant
+h2_val = 0; % h2 dominance coefficient value, constant
+h3_val = 0; % h3 dominance coefficient value, constant
 
 syms s q G0 G1 G2 G3 G4 g0 g1 g2 h1 h2 h3 mu nu
 
