@@ -90,7 +90,7 @@ auto <- auto %>%
          G4 = g2^2,
          load = 1-w, 
          PD = g2 - q^2, 
-         Model = "Autotetraploid")
+         Model = "Autotetraploid (beneath allotetraploid)")
 
 allo <- allo %>% 
   mutate(G0 = g00^2, 
@@ -107,7 +107,7 @@ full_data <- bind_rows(dip, auto, allo)
 
 # Set factor levels
 full_data$Dominance <- factor(full_data$Dominance, levels = c("Recessive", "Additive", "Dominant"))
-full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid", "Allotetraploid"))
+full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid (beneath allotetraploid)", "Allotetraploid"))
 full_data$Stability <- factor(full_data$Stability, levels = c("stable", "selected", "neutral", "unstable"))
 
 # Add line type based on stability
@@ -116,7 +116,7 @@ full_data <- full_data %>%
 
 # Color mapping
 ploidy_colors <- c("Diploid" = dip_color,
-                   "Autotetraploid" = auto_color,
+                   "Autotetraploid (beneath allotetraploid)" = auto_color,
                    "Allotetraploid" = allo_color)
 
 # Create data frame for panel labels

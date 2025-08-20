@@ -22,14 +22,17 @@ writematrix(allo_rec, 'allo_rec.csv')
 disp('Recessive case complete')
 
 % partially recessive case
-h_val = .4;
-h1_val = .2;
-h2_val = .4;
-h3_val = .6;
+h_val = .1;
+h1_val = .02;
+h2_val = .1;
+h3_val = .4;
 
 dip_part_rec = diploids_bifn_data_stable_only(s_val_range, mu_val, nu_val, h_val);
+disp('Dip partially recessive complete')
 auto_part_rec = auto_bifn_data_stable_only(s_val_range, mu_val, nu_val, h1_val, h2_val, h3_val);
+disp('Auto partially recessive complete')
 allo_part_rec = allo_bifn_stable_only(s_val_range, mu_val, nu_val, h1_val, h2_val, h3_val);
+disp('Allo partially recessive complete')
 
 writematrix(dip_part_rec, 'dip_part_rec.csv')
 writematrix(auto_part_rec, 'auto_part_rec.csv')
@@ -54,14 +57,17 @@ writematrix(allo_add, 'allo_add.csv')
 disp('Additive case complete')
 
 % partially dominant case
-h_val = .6;
-h1_val = .4;
-h2_val = .6;
-h3_val = .8;
+h_val = .9;
+h1_val = .6;
+h2_val = .9;
+h3_val = .98;
 
 dip_part_dom = diploids_bifn_data_stable_only(s_val_range, mu_val, nu_val, h_val);
+disp('Dip partially dominant complete')
 auto_part_dom = auto_bifn_data_stable_only(s_val_range, mu_val, nu_val, h1_val, h2_val, h3_val);
+disp('Auto partially dominant complete')
 allo_part_dom = allo_bifn_stable_only(s_val_range, mu_val, nu_val, h1_val, h2_val, h3_val);
+disp('Allo partially dominant complete')
 
 writematrix(dip_part_dom, 'dip_part_dom.csv')
 writematrix(auto_part_dom, 'auto_part_dom.csv')

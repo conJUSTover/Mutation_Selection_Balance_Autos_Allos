@@ -25,13 +25,13 @@ dip_dom <- read_csv("dip_dom.csv", col_names = c("s", "q", "g0", "g1", "w"))
 auto_rec <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_part_rec <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_add <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
-auto_part_dom <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom <- read_csv("auto_part_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_dom <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
 allo_rec <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_part_rec <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_add <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
-allo_part_dom <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom <- read_csv("allo_part_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_dom <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
 # Add dominance labels
@@ -80,7 +80,7 @@ auto <- auto %>%
          G4 = g2^2,
          load = 1-w, 
          PD = g2 - q^2, 
-         Model = "Autotetraploid")
+         Model = "Autotetraploid (beneath allotetraploid)")
 
 allo <- allo %>% 
   mutate(G0 = g00^2, 
@@ -96,11 +96,11 @@ allo <- allo %>%
 full_data <- bind_rows(dip, auto, allo)
 
 # Set ploidy as a factor for consistent color and legend order
-full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid", "Allotetraploid"))
+full_data$Model <- factor(full_data$Model, levels = c("Diploid", "Autotetraploid (beneath allotetraploid)", "Allotetraploid"))
 
 # Color mapping
 ploidy_colors <- c("Diploid" = dip_color,
-                   "Autotetraploid" = auto_color,
+                   "Autotetraploid (beneath allotetraploid)" = auto_color,
                    "Allotetraploid" = allo_color)
 
 ### ====================================================
@@ -197,13 +197,13 @@ setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_
 auto_rec_7 <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_part_rec_7 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_add_7 <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
-auto_part_dom_7 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom_7 <- read_csv("auto_part_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_dom_7 <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
 allo_rec_7 <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_part_rec_7 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_add_7 <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
-allo_part_dom_7 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom_7 <- read_csv("allo_part_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_dom_7 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
 # Add dominance labels
@@ -236,7 +236,7 @@ auto_7 <- auto_7 %>%
          G4 = g2^2,
          load = 1-w, 
          PD = g2 - q^2, 
-         Model = "Autotetraploid")
+         Model = "Autotetraploid (beneath allotetraploid)")
 
 allo_7 <- allo_7 %>% 
   mutate(G0 = g00^2, 
@@ -254,13 +254,13 @@ setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_
 auto_rec_6 <- read_csv("auto_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_part_rec_6 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_add_6 <- read_csv("auto_add.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
-auto_part_dom_6 <- read_csv("auto_part_rec.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
+auto_part_dom_6 <- read_csv("auto_part_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 auto_dom_6 <- read_csv("auto_dom.csv", col_names = c("s", "q", "g0", "g1", "g2", "w"))
 
 allo_rec_6 <- read_csv("allo_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_part_rec_6 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_add_6 <- read_csv("allo_add.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
-allo_part_dom_6 <- read_csv("allo_part_rec.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
+allo_part_dom_6 <- read_csv("allo_part_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 allo_dom_6 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10", "g11", "w"))
 
 # Add dominance labels
@@ -293,7 +293,7 @@ auto_6 <- auto_6 %>%
          G4 = g2^2,
          load = 1-w, 
          PD = g2 - q^2, 
-         Model = "Autotetraploid")
+         Model = "Autotetraploid (beneath allotetraploid)")
 
 allo_6 <- allo_6 %>% 
   mutate(G0 = g00^2, 
@@ -426,23 +426,22 @@ ggsave("load_differences_by_mutation_rate.pdf", p_load_diff, width = 6.5, height
 ### THIRD PLOT: PD AND GENOTYPE DISTRIBUTIONS TO EXPLAIN THE BUMP IN LOAD
 ### =====================================================================
 
-# plot of PD and genotype distributions to explain the bump in load
-dominant_data <- full_data %>%
-  filter(Dominance == "Dominant", Model %in% c("Autotetraploid", "Allotetraploid")) %>%
-  select(s, Model, PD, G0, G1, G2, G3, G4) %>%
+# Remove the dominance filter to include all dominance classes
+pd_genotype_data <- full_data %>%
+  filter(Model %in% c("Autotetraploid (beneath allotetraploid)", "Allotetraploid")) %>%  
+  select(s, Model, Dominance, PD, G0, G1, G2, G3, G4) %>%      
   pivot_longer(cols = c(PD, G0, G1, G2, G3, G4), 
                names_to = "Variable", 
                values_to = "Value") %>%
   mutate(Variable = factor(Variable, levels = c("PD", "G0", "G1", "G2", "G3", "G4")))
 
-# to change PD to have \Delta
-variable_labeller <- c("PD" = "Delta~~(PD)", "G0" = "G0", "G1" = "G1", "G2" = "G2", "G3" = "G3", "G4" = "G4")
-
-p_load_bump <- ggplot(dominant_data, aes(x = s, y = Value, color = Model)) +
-  geom_line(linewidth=.75) +
-  facet_wrap(~Variable, scales = "free_y", ncol = 1, strip.position = "left",
-             labeller = as_labeller(variable_labeller, default = label_parsed)) +
-  scale_color_manual(values = c("Autotetraploid" = auto_color, "Allotetraploid" = allo_color)) +
+# Update the plot to facet by both Variable and Dominance
+p_load_bump <- ggplot(pd_genotype_data, aes(x = s, y = Value, color = Model)) +
+  geom_line(linewidth = .75) +
+  facet_grid(Variable ~ Dominance, scales = "free_y",               
+             labeller = labeller(Variable = as_labeller(variable_labeller, default = label_parsed),
+                                 Dominance = label_value)) +         
+  scale_color_manual(values = c("Autotetraploid (beneath allotetraploid)" = auto_color, "Allotetraploid" = allo_color)) +
   scale_x_log10(
     limits = c(1e-9, 1e-3),
     breaks = c(1e-8, 1e-6, 1e-4),
@@ -453,10 +452,11 @@ p_load_bump <- ggplot(dominant_data, aes(x = s, y = Value, color = Model)) +
   theme(
     panel.grid.minor = element_blank(),
     strip.background = element_blank(),
-    strip.placement = "outside",
-    legend.position = "bottom"
+    legend.position = "bottom",
+    plot.caption = element_text(hjust = 0.5, size = 6),
+    axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
-  labs(x = "s (Selection Coefficient)", y = NULL, color = "Model")
+  labs(x = "s (Selection Coefficient)", y = NULL, color = "Model") 
 
-ggsave("load_bump.pdf", p_load_bump, width = 4.5, height = 7, units = "in")
+ggsave("load_bump.pdf", p_load_bump, width = 7.5, height = 7.5, units = "in")  
 
