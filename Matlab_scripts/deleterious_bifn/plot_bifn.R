@@ -6,6 +6,9 @@ library(patchwork)
 
 setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/deleterious_bifn")
 
+
+### Recreates Figure 3
+
 # Define color mapping
 dip_color <- "#F04D13"
 auto_color <- "#66BED6"

@@ -36,21 +36,21 @@ allo_dom <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g10"
 
 # Add dominance labels
 dip_rec$Dominance       <- "Recessive"
-dip_part_rec$Dominance  <- "Partially Recessive"
+dip_part_rec$Dominance  <- "Partially\nRecessive"
 dip_add$Dominance       <- "Additive"
-dip_part_dom$Dominance  <- "Partially Dominant"
+dip_part_dom$Dominance  <- "Partially\nDominant"
 dip_dom$Dominance       <- "Dominant"
 
 auto_rec$Dominance       <- "Recessive"
-auto_part_rec$Dominance  <- "Partially Recessive"
+auto_part_rec$Dominance  <- "Partially\nRecessive"
 auto_add$Dominance       <- "Additive"
-auto_part_dom$Dominance  <- "Partially Dominant"
+auto_part_dom$Dominance  <- "Partially\nDominant"
 auto_dom$Dominance       <- "Dominant"
 
 allo_rec$Dominance       <- "Recessive"
-allo_part_rec$Dominance  <- "Partially Recessive"
+allo_part_rec$Dominance  <- "Partially\nRecessive"
 allo_add$Dominance       <- "Additive"
-allo_part_dom$Dominance  <- "Partially Dominant"
+allo_part_dom$Dominance  <- "Partially\nDominant"
 allo_dom$Dominance       <- "Dominant"
 
 # Bind each ploidy group together
@@ -59,9 +59,9 @@ auto <- bind_rows(auto_rec, auto_part_rec, auto_add, auto_part_dom, auto_dom)
 allo <- bind_rows(allo_rec, allo_part_rec, allo_add, allo_part_dom, allo_dom)
 
 # Factor by dominance
-dip$Dominance <- factor(dip$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
-auto$Dominance <- factor(auto$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
-allo$Dominance <- factor(allo$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+dip$Dominance <- factor(dip$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
+auto$Dominance <- factor(auto$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
+allo$Dominance <- factor(allo$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
 
 # Calculate summary statistics for each dataset, including load, PD, and genotypes
 dip <- dip %>% 
@@ -106,19 +106,20 @@ ploidy_colors <- c("Diploid" = dip_color,
 ### ====================================================
 ### FIRST PLOT - BIFURCATION DIAGRAM SUBSET BY DOMINANCE
 ### ====================================================
+###               Recreates Figure 2
 
 # Create data frame for panel labels
 panel_labels_top <- data.frame(
-  Dominance = factor(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"),
-                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
+  Dominance = factor(c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"),
+                     levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant")),
   label = c("A", "B", "C", "D", "E"),
   x = rep(3e-4, 5),  # x position for labels
   y = rep(0.95, 5)   # y position for labels
 )
 
 panel_labels_bottom <- data.frame(
-  Dominance = factor(c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"),
-                     levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant")),
+  Dominance = factor(c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"),
+                     levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant")),
   label = c("F", "G", "H", "I", "J"),
   x = rep(3e-4, 5),   # x position for labels
   y = rep(4.75e-8, 5) # y position for labels
@@ -191,6 +192,8 @@ ggsave("equal_mut_bifn.pdf", final_plot, width = 6.5, height = 4, units = "in")
 ### ================================================
 ### SECOND PLOT: DIFFERENCES BETWEEN AUTOS AND ALLOS
 ### ================================================
+###          Recreates Figures S1 and S2
+
 # First, we need to read in the additional data - note we don't need the diploid data here
 setwd("~/GitHub/Mutation_Selection_Balance_Autos_Allos/Matlab_scripts/equal_mut_bifn/mu_1e-7")
 
@@ -208,15 +211,15 @@ allo_dom_7 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g1
 
 # Add dominance labels
 auto_rec_7$Dominance       <- "Recessive"
-auto_part_rec_7$Dominance  <- "Partially Recessive"
+auto_part_rec_7$Dominance  <- "Partially\nRecessive"
 auto_add_7$Dominance       <- "Additive"
-auto_part_dom_7$Dominance  <- "Partially Dominant"
+auto_part_dom_7$Dominance  <- "Partially\nDominant"
 auto_dom_7$Dominance       <- "Dominant"
 
 allo_rec_7$Dominance       <- "Recessive"
-allo_part_rec_7$Dominance  <- "Partially Recessive"
+allo_part_rec_7$Dominance  <- "Partially\nRecessive"
 allo_add_7$Dominance       <- "Additive"
-allo_part_dom_7$Dominance  <- "Partially Dominant"
+allo_part_dom_7$Dominance  <- "Partially\nDominant"
 allo_dom_7$Dominance       <- "Dominant"
 
 # Bind each ploidy group together
@@ -224,8 +227,8 @@ auto_7 <- bind_rows(auto_rec_7, auto_part_rec_7, auto_add_7, auto_part_dom_7, au
 allo_7 <- bind_rows(allo_rec_7, allo_part_rec_7, allo_add_7, allo_part_dom_7, allo_dom_7)
 
 # Factor by dominance
-auto_7$Dominance <- factor(auto_7$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
-allo_7$Dominance <- factor(allo_7$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+auto_7$Dominance <- factor(auto_7$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
+allo_7$Dominance <- factor(allo_7$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
 
 # Calculate summary statistics for each dataset, including load, PD, and genotypes
 auto_7 <- auto_7 %>% 
@@ -265,15 +268,15 @@ allo_dom_6 <- read_csv("allo_dom.csv", col_names = c("s", "q", "g00", "g01", "g1
 
 # Add dominance labels
 auto_rec_6$Dominance       <- "Recessive"
-auto_part_rec_6$Dominance  <- "Partially Recessive"
+auto_part_rec_6$Dominance  <- "Partially\nRecessive"
 auto_add_6$Dominance       <- "Additive"
-auto_part_dom_6$Dominance  <- "Partially Dominant"
+auto_part_dom_6$Dominance  <- "Partially\nDominant"
 auto_dom_6$Dominance       <- "Dominant"
 
 allo_rec_6$Dominance       <- "Recessive"
-allo_part_rec_6$Dominance  <- "Partially Recessive"
+allo_part_rec_6$Dominance  <- "Partially\nRecessive"
 allo_add_6$Dominance       <- "Additive"
-allo_part_dom_6$Dominance  <- "Partially Dominant"
+allo_part_dom_6$Dominance  <- "Partially\nDominant"
 allo_dom_6$Dominance       <- "Dominant"
 
 # Bind each ploidy group together
@@ -281,8 +284,8 @@ auto_6 <- bind_rows(auto_rec_6, auto_part_rec_6, auto_add_6, auto_part_dom_6, au
 allo_6 <- bind_rows(allo_rec_6, allo_part_rec_6, allo_add_6, allo_part_dom_6, allo_dom_6)
 
 # Factor by dominance
-auto_6$Dominance <- factor(auto_6$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
-allo_6$Dominance <- factor(allo_6$Dominance, levels = c("Recessive", "Partially Recessive", "Additive", "Partially Dominant", "Dominant"))
+auto_6$Dominance <- factor(auto_6$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
+allo_6$Dominance <- factor(allo_6$Dominance, levels = c("Recessive", "Partially\nRecessive", "Additive", "Partially\nDominant", "Dominant"))
 
 # Calculate summary statistics for each dataset, including load, PD, and genotypes
 auto_6 <- auto_6 %>% 
@@ -425,6 +428,7 @@ ggsave("load_differences_by_mutation_rate.pdf", p_load_diff, width = 6.5, height
 ### =====================================================================
 ### THIRD PLOT: PD AND GENOTYPE DISTRIBUTIONS TO EXPLAIN THE BUMP IN LOAD
 ### =====================================================================
+###                      Recreates Figure S3
 
 # Remove the dominance filter to include all dominance classes
 pd_genotype_data <- full_data %>%
@@ -458,5 +462,5 @@ p_load_bump <- ggplot(pd_genotype_data, aes(x = s, y = Value, color = Model)) +
   ) +
   labs(x = "s (Selection Coefficient)", y = NULL, color = "Model") 
 
-ggsave("load_bump.pdf", p_load_bump, width = 7.5, height = 7.5, units = "in")  
+ggsave("load_bump.pdf", p_load_bump, width = 7, height = 6.5, units = "in")  
 
