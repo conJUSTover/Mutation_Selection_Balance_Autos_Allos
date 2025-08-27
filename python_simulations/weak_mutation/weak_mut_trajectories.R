@@ -80,7 +80,7 @@ r <- ggplot(allo[allo$Generation < 2000,], aes(x=Generation, y=q)) +
   facet_grid(Dominance~.) + xlab("")
 
 # =====================
-### Recreates figure S8
+### Recreates figure S6
 # =====================
 
 allele_traj = q | p | r
@@ -88,7 +88,7 @@ ggsave("weak_mut_allele_trajectories.pdf", allele_traj, width = 6.5, height = 5,
 
 
 # =====================
-### Recreates figure 5
+### Recreates figure 4
 # =====================
 
 p1 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w)) + 
@@ -142,7 +142,7 @@ ancestral_allele_traj = q2 | p2 | r2
 ggsave("weak_mut_ancestral_allele_trajectories.pdf", ancestral_allele_traj, width = 6.5, height = 5, units = "in")
 
 # =====================
-### Recreates figure S9
+### Recreates figure S7
 # =====================
 
 p3 <- ggplot(auto[auto$Generation < 2000,], aes(x=Generation, y=w_var)) + 
