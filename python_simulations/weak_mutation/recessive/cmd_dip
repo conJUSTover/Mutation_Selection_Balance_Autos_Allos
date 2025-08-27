@@ -1,99 +1,99 @@
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.010 -g1 0.990 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.010.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.020 -g1 0.980 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.020.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.030 -g1 0.970 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.030.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.040 -g1 0.960 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.040.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.050 -g1 0.950 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.050.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.060 -g1 0.940 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.060.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.070 -g1 0.930 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.070.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.080 -g1 0.920 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.080.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.090 -g1 0.910 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.090.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.100 -g1 0.900 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.100.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.110 -g1 0.890 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.110.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.120 -g1 0.880 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.120.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.130 -g1 0.870 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.130.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.140 -g1 0.860 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.140.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.150 -g1 0.850 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.150.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.160 -g1 0.840 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.160.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.170 -g1 0.830 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.170.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.180 -g1 0.820 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.180.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.190 -g1 0.810 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.190.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.200 -g1 0.800 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.200.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.210 -g1 0.790 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.210.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.220 -g1 0.780 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.220.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.230 -g1 0.770 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.230.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.240 -g1 0.760 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.240.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.250 -g1 0.750 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.250.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.260 -g1 0.740 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.260.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.270 -g1 0.730 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.270.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.280 -g1 0.720 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.280.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.290 -g1 0.710 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.290.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.300 -g1 0.700 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.300.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.310 -g1 0.690 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.310.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.320 -g1 0.680 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.320.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.330 -g1 0.670 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.330.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.340 -g1 0.660 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.340.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.350 -g1 0.650 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.350.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.360 -g1 0.640 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.360.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.370 -g1 0.630 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.370.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.380 -g1 0.620 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.380.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.390 -g1 0.610 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.390.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.400 -g1 0.600 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.400.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.410 -g1 0.590 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.410.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.420 -g1 0.580 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.420.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.430 -g1 0.570 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.430.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.440 -g1 0.560 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.440.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.450 -g1 0.550 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.450.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.460 -g1 0.540 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.460.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.470 -g1 0.530 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.470.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.480 -g1 0.520 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.480.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.490 -g1 0.510 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.490.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.500 -g1 0.500 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.500.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.510 -g1 0.490 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.510.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.520 -g1 0.480 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.520.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.530 -g1 0.470 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.530.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.540 -g1 0.460 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.540.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.550 -g1 0.450 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.550.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.560 -g1 0.440 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.560.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.570 -g1 0.430 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.570.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.580 -g1 0.420 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.580.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.590 -g1 0.410 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.590.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.600 -g1 0.400 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.600.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.610 -g1 0.390 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.610.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.620 -g1 0.380 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.620.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.630 -g1 0.370 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.630.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.640 -g1 0.360 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.640.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.650 -g1 0.350 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.650.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.660 -g1 0.340 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.660.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.670 -g1 0.330 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.670.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.680 -g1 0.320 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.680.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.690 -g1 0.310 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.690.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.700 -g1 0.300 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.700.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.710 -g1 0.290 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.710.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.720 -g1 0.280 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.720.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.730 -g1 0.270 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.730.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.740 -g1 0.260 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.740.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.750 -g1 0.250 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.750.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.760 -g1 0.240 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.760.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.770 -g1 0.230 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.770.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.780 -g1 0.220 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.780.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.790 -g1 0.210 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.790.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.800 -g1 0.200 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.800.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.810 -g1 0.190 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.810.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.820 -g1 0.180 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.820.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.830 -g1 0.170 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.830.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.840 -g1 0.160 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.840.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.850 -g1 0.150 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.850.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.860 -g1 0.140 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.860.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.870 -g1 0.130 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.870.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.880 -g1 0.120 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.880.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.890 -g1 0.110 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.890.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.900 -g1 0.100 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.900.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.910 -g1 0.090 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.910.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.920 -g1 0.080 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.920.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.930 -g1 0.070 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.930.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.940 -g1 0.060 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.940.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.950 -g1 0.050 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.950.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.960 -g1 0.040 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.960.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.970 -g1 0.030 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.970.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.980 -g1 0.020 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.980.txt
-python ~/GitHub/Mutation_Selection_Balance_Of_Homoeologous_Exchange/simulation_scripts/diploid_sims.py -g -g0 0.990 -g1 0.010 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -o dip.990.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .010000 -g1 .990000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.010000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .020000 -g1 .980000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.020000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .030000 -g1 .970000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.030000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .040000 -g1 .960000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.040000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .050000 -g1 .950000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.050000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .060000 -g1 .940000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.060000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .070000 -g1 .930000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.070000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .080000 -g1 .920000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.080000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .090000 -g1 .910000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.090000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .100000 -g1 .900000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.100000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .110000 -g1 .890000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.110000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .120000 -g1 .880000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.120000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .130000 -g1 .870000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.130000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .140000 -g1 .860000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.140000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .150000 -g1 .850000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.150000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .160000 -g1 .840000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.160000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .170000 -g1 .830000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.170000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .180000 -g1 .820000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.180000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .190000 -g1 .810000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.190000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .200000 -g1 .800000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.200000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .210000 -g1 .790000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.210000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .220000 -g1 .780000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.220000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .230000 -g1 .770000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.230000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .240000 -g1 .760000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.240000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .250000 -g1 .750000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.250000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .260000 -g1 .740000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.260000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .270000 -g1 .730000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.270000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .280000 -g1 .720000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.280000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .290000 -g1 .710000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.290000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .300000 -g1 .700000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.300000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .310000 -g1 .690000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.310000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .320000 -g1 .680000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.320000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .330000 -g1 .670000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.330000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .340000 -g1 .660000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.340000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .350000 -g1 .650000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.350000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .360000 -g1 .640000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.360000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .370000 -g1 .630000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.370000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .380000 -g1 .620000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.380000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .390000 -g1 .610000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.390000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .400000 -g1 .600000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.400000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .410000 -g1 .590000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.410000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .420000 -g1 .580000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.420000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .430000 -g1 .570000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.430000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .440000 -g1 .560000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.440000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .450000 -g1 .550000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.450000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .460000 -g1 .540000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.460000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .470000 -g1 .530000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.470000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .480000 -g1 .520000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.480000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .490000 -g1 .510000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.490000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .500000 -g1 .500000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.500000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .510000 -g1 .490000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.510000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .520000 -g1 .480000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.520000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .530000 -g1 .470000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.530000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .540000 -g1 .460000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.540000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .550000 -g1 .450000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.550000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .560000 -g1 .440000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.560000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .570000 -g1 .430000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.570000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .580000 -g1 .420000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.580000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .590000 -g1 .410000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.590000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .600000 -g1 .400000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.600000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .610000 -g1 .390000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.610000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .620000 -g1 .380000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.620000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .630000 -g1 .370000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.630000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .640000 -g1 .360000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.640000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .650000 -g1 .350000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.650000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .660000 -g1 .340000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.660000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .670000 -g1 .330000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.670000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .680000 -g1 .320000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.680000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .690000 -g1 .310000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.690000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .700000 -g1 .300000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.700000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .710000 -g1 .290000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.710000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .720000 -g1 .280000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.720000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .730000 -g1 .270000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.730000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .740000 -g1 .260000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.740000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .750000 -g1 .250000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.750000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .760000 -g1 .240000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.760000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .770000 -g1 .230000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.770000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .780000 -g1 .220000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.780000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .790000 -g1 .210000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.790000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .800000 -g1 .200000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.800000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .810000 -g1 .190000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.810000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .820000 -g1 .180000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.820000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .830000 -g1 .170000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.830000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .840000 -g1 .160000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.840000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .850000 -g1 .150000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.850000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .860000 -g1 .140000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.860000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .870000 -g1 .130000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.870000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .880000 -g1 .120000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.880000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .890000 -g1 .110000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.890000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .900000 -g1 .100000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.900000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .910000 -g1 .090000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.910000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .920000 -g1 .080000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.920000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .930000 -g1 .070000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.930000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .940000 -g1 .060000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.940000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .950000 -g1 .050000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.950000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .960000 -g1 .040000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.960000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .970000 -g1 .030000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.970000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .980000 -g1 .020000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.980000.txt
+python ~/GitHub/Mutation_Selection_Balance_Autos_Allos/python_simulations/simulation_scripts/diploid_sims.py -g -g0 .990000 -g1 .010000 -N 3000 -s 1e-2 -mu 1e-8 -nu 1e-8 -h1 0 -h2 0 -h3 0 -o dip.990000.txt
