@@ -1,6 +1,6 @@
 # Python Simulations
 
-This directory contains both simulation scripts and code to generate all data and figures associated with these simulation scripts. More details on each subdirectory are outlined below. 
+This directory contains both discrete time simulation scripts and code to generate all data and figures associated with these simulation scripts. More details on each subdirectory are outlined below. 
 
 ## simulation_scripts
 
