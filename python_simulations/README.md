@@ -2,9 +2,11 @@
 
 This directory contains both simulation scripts and code to generate all data and figures associated with these simulation scripts. More details on each subdirectory are outlined below. 
 
-## simultion_scripts
+## simulation_scripts
 
-This subdirectory contains the discrete time, generation-based Python simulations for our model. There is a simulation script for each model (diploids, autotetraploids, and allotetraploids). This simulation avoids the use of a limit to obtain continuous time ODEs and may be more suitable for simulations with very strong mutation or selection. 
+This subdirectory contains the discrete time, generation-based Python simulations for our model. There is a simulation script for each model (diploids, autotetraploids, and allotetraploids). 
+
+This simulation avoids the use of a limit to obtain continuous time ODEs and may be more suitable for simulations with very strong mutation or selection. 
 
 ## panmictic_disequilibrium_decay
 
