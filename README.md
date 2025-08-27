@@ -6,7 +6,7 @@ This repository serves as the public and official hosting of the code and data i
 
 ## Matlab_scripts
 
-This directory includes all of the Matlab code used to describe the systems of differential equations. This includes base models with limited functionality, functions to iterate through a vector of selection coefficients and generate bifurcation data, and numerical ODE scripts. More details are included in the README file for this directory. 
+This directory includes all of the Matlab code used to describe and analyze the systems of differential equations. This includes base models with limited functionality, functions to iterate through a vector of selection coefficients and generate bifurcation data, and numerical ODE scripts. More details are included in the README file for this directory. 
 
 ## python_simulations
 
